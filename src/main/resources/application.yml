@@ -1,0 +1,74 @@
+server:
+ port: 8080
+spring:
+  datasource:
+    name: wechat_diancan
+       url: jdbc:mysql://localhost:3306/wechat_diancan
+       username: root
+       password: root
+       # 使用druid数据源
+       type: com.alibaba.druid.pool.DruidDataSource
+       driver-class-name: com.mysql.jdbc.Driver
+       filters: stat
+       maxActive: 20
+       initialSize: 1
+       maxWait: 60000
+       minIdle: 1
+       timeBetweenEvictionRunsMillis: 60000
+       minEvictableIdleTimeMillis: 300000
+       validationQuery: select 'x'
+       testWhileIdle: true
+       testOnBorrow: false
+       testOnReturn: false
+       poolPreparedStatements: true
+       maxOpenPreparedStatements: 20
+    # jackson时间格式化
+    jackson:
+      time-zone: GMT+8
+      date-format: yyyy-MM-dd HH:mm:ss
+    http:
+      multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+      enabled: true
+    # 指定静态资源的路径
+    resources:
+      static-locations: classpath:/static/,classpath:/templates/,file:${fileupload.filepath}
+      # Mybatis配置
+    mybatis:
+      mapperLocations: classpath:mapper/**/*.xml
+    wechat:
+      miniapp:
+        appid: xxxxxxxxxxxx
+        secret: xxxxxxxxxxxxxxx
+        token:
+        aesKey:
+        msgDataFormat: JSON
+    pay:
+       appId: xxxxxxxx
+       mchId:
+       mchKey:
+       subAppId:
+       subMchId:
+       keyPath:
+       notifyUrl: https://x.com/api/wechat/pay/parseOrderNotifyResult
+      # FastDFS 服务配置
+    fdfs:
+       network-timeout: 5
+       connect-timeout: 30
+       tracker-server:
+         - 177.77.77.159:22122
+       charset: UTF-8
+       tracker-http-port: 8080
+       anti-steal-token: false
+       secret-key: FastDFS1234567890
+      # 文件上传
+    fileupload:
+       server: http://localhost:8080/fileupload
+       filepath: d:/file
+    ueditor:
+       imageActionName: uploadimage
+       imageUrlPrefix: http://localhost:8080/fileupload
+       imagePath: /fileupload/
+       imageFieldName: upfile
+       imageMaxSize: 2048
