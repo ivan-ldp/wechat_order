@@ -24,4 +24,7 @@ spring:
     testOnReturn: false
     poolPreparedStatements: true
     maxPoolPreparedStatementPerConnectionSize: 20
-
+  mvc:
+    view:
+      prefix: /templates/
+      suffix: .html
