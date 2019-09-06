@@ -1,6 +1,6 @@
 server:
   tomcat:
-    uri-encoding: UTF-8
+    uri-encoding: utf-8
     max-threads: 1000
     min-spare-threads: 30
   port: 8080
@@ -10,8 +10,8 @@ spring:
     driverClassName: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/wechat_diancan?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
     username: root
-    password: root
-    #连接池的配置信息
+    password: 123
+    #锟斤拷锟接池碉拷锟斤拷锟斤拷锟斤拷息
     initialSize: 10
     minIdle: 10
     maxActive: 100
@@ -26,5 +26,5 @@ spring:
     maxPoolPreparedStatementPerConnectionSize: 20
   thymeleaf:
     prefix:
-      classpath: /templates   # 访问template下的html文件需要配置模板，映射
-    cache: false # 开发时关闭缓存,不然没法看到实时页面
+      classpath: /templates   # 锟斤拷锟斤拷template锟铰碉拷html锟侥硷拷锟斤拷要锟斤拷锟斤拷模锟藉，映锟斤拷
+    cache: false # 锟斤拷锟斤拷时锟截闭伙拷锟斤拷,锟斤拷然没锟斤拷锟斤拷锟斤拷实时页锟斤拷
