@@ -26,5 +26,5 @@ spring:
     maxPoolPreparedStatementPerConnectionSize: 20
   thymeleaf:
     prefix:
-      classpath: /templates   # ����template�µ�html�ļ���Ҫ����ģ�壬ӳ��
+      classpath: /templates   #对templates下面的文件进行解析
     cache: false # ����ʱ�رջ���,��Ȼû������ʵʱҳ��
