@@ -23,7 +23,7 @@ spring:
     testOnReturn: false
     poolPreparedStatements: true
     maxPoolPreparedStatementPerConnectionSize: 20
-  thymeleaf:
-    prefix:
-      classpath: /templates   #对templates下面的文件进行解析
-    cache: false # 关闭缓存修改完html后一定要ctrl+f9重新build一下。再回到浏览器刷新，就能看到效果了，要不前面加了没啥用
+  #thymeleaf:
+    #prefix:
+      #classpath: /templates   #对templates下面的文件进行解析
+    #cache: false # 关闭缓存修改完html后一定要ctrl+f9重新build一下。再回到浏览器刷新，就能看到效果了，要不前面加了没啥用
