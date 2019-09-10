@@ -1,15 +1,10 @@
-package com.kgc.wechatorder.mall.dao;
+package com.kgc.wechatorder.mall.service;
 
 import com.kgc.wechatorder.mall.pojo.Goods;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-/**
- * 商品接口类
- */
-@Mapper
 public interface GoodsMapper {
     /**
      * 按商品分类id查询
@@ -83,5 +78,5 @@ public interface GoodsMapper {
      * @param
      * @return
      */
-    public int getGoodsCount(@Param("goodsName") String goodsName) ;
+    public int getGoodsCount(String goodsName) ;
 }

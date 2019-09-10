@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--映射文件的命名空间，为mapper.xml所有的目录完全限定名加文件名-->
+<mapper namespace="com.kgc.wechatorder.mall.dao.GoodsMapper">
+    <resultMap id="list" type="com.kgc.wechatorder.mall.pojo.Goods">
+        <result property="goodsName" column="goodsName"/>
+        <result property="picUrl" column="picUrl"/>
+        <result property="description" column="description"/>
+        <result property="xiaoLiang" column="xiaoLiang"/>
+        <result property="remains" column="remains"/>
+        <result property="price" column="price"/>
+        <result property="status" column="status"/>
+    </resultMap>
+    <!--通过id来查询商品-->
+    <select id="findGoodsListById1" parameterType="int" resultMap="list">
+        select gs.*,gc.categoryName from goods gs,goods_category gc where gs.categoryId=gc.categoryId and
+         gc.categoryId=#{sortId}
+    </select>
+    <!--对查询的商品进行分页商品-->
+    <select id="findGoodsListById2" resultMap="list">
+        select gs.* from goods gs
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="goodsName !=null || goodsName !=''">
+                and gs.goodsName like CONCAT ('%',#{goodsName},'%')
+            </if>
+            <if test="status!=null">
+                and gs.status=#{status}
+            </if>
+        </trim>
+        order by xiaoLiang DESC limit #{currentPageNo},#{pageSize}
+    </select>
+    <!--通过ID来查询商品-->
+    <select id="getGoodsById" parameterType="int" resultType="com.kgc.wechatorder.mall.pojo.Goods">
+        select  * from goods where goodsId=#{goodsId}
+    </select>
+    <!--更新小程序商品库存-->
+    <update id="updateRemaining">
+        update goods set remains=remains-#{num} where goodsId=#{id}
+        and remains>=#{num}
+    </update>
+    <!--增加商品-->
+    <insert id="add" parameterType="com.kgc.wechatorder.mall.pojo.Goods" >
+      insert into goods values (#{goodsId},#{categoryId},#{goodsName},#{picUrl},#{description},#{xiaoLiang},#{remains},
+      #{status},#{price},#{createTime},#{updateTime})
+    </insert>
+    <!--修改商品-->
+    <update id="modify">
+        update goods
+        <trim prefix="set" suffixOverrides="," suffix="where goodsId=#{goodsId}">
+            <if test="categoryId!= null">categoryId=#{categoryId},</if>
+            <if test="goodsName!= null">supportROM=#{supportROM},</if>
+            <if test="picUrl != null">picUrl=#{picUrl},</if>
+            <if test="description != null">description=#{description},</if>
+            <if test="xiaoLiang != null">xiaoLiang=#{xiaoLiang},</if>
+            <if test="remains != null">remains=#{remains},</if>
+            <if test="status != null">status=#{status},</if>
+            <if test="price != null">price=#{price},</if>
+            <if test="createTime != null">createTime=#{createTime},</if>
+            <if test="updateTime != null">updateTime=#{updateTime},</if>
+        </trim>
+    </update>
+    <!--凭借id来删除商品-->
+    <delete id="deleteGoodsById">
+      delete from goods where id=#{goodsId}
+    </delete>
+    <!--通过商品名称来获取数量-->
+    <select id="getGoodsCount" resultType="int">
+        select count(1) from goods gs where gs.goodsName like CONCAT ('%',#{goodsName},'%')
+    </select>
+</mapper>

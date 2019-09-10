@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <!--映射文件的命名空间，为mapper.xml所有的目录完全限定名加文件名-->
 <mapper namespace="com.kgc.wechatorder.mall.dao.GoodsCategoryMapper">
-    <select id="findAllGoodsCategory" resultType="GoodsCategory">
+    <select id="findAllGoodsCategory" resultType="com.kgc.wechatorder.mall.pojo.GoodsCategory">
         select categoryName from goods_category
     </select>
 </mapper>
