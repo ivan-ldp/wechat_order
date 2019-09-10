@@ -1,29 +1,12 @@
-server:
-  tomcat:
-    uri-encoding: utf-8
-    max-threads: 1000
-    min-spare-threads: 30
-  port: 8080
 spring:
   datasource:
+    driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
-    driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/wechat_diancan?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
     username: root
     password: 123
-    initialSize: 10
-    minIdle: 10
-    maxActive: 100
-    maxWait: 60000
-    timeBetweenEvictionRunsMillis: 60000
-    minEvictableIdleTimeMillis: 300000
-    validationQuery: SELECT 1 FROM DUAL
-    testWhileIdle: true
-    testOnBorrow: false
-    testOnReturn: false
-    poolPreparedStatements: true
-    maxPoolPreparedStatementPerConnectionSize: 20
-  #thymeleaf:
-    #prefix:
-      #classpath: /templates   #对templates下面的文件进行解析
-    #cache: false # 关闭缓存修改完html后一定要ctrl+f9重新build一下。再回到浏览器刷新，就能看到效果了，要不前面加了没啥用
+    url: jdbc:mysql:///wechat_diancan
+mybatis:
+  mapper-locations: mapper/**/**.xml
+  type-aliases-package: com.kgc.wechatorder.wechat.pojo
+server:
+  port: 8080

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--映射文件的命名空间，为mapper.xml所有的目录完全限定名加文件名-->
+<mapper namespace="com.kgc.wechatorder.wechat.dao.UserMapper">
+    <select id="info" resultType="com.kgc.wechatorder.wechat.pojo.User">
+        select * from user
+    </select>
+</mapper>
