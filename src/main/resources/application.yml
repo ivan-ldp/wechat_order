@@ -7,6 +7,6 @@ spring:
     url: jdbc:mysql:///wechat_diancan
 mybatis:
   mapper-locations: mapper/**/**.xml
-#  type-aliases-package: com.kgc.wechatorder.wechat.pojo
+  type-aliases-package: com.kgc.wechatorder.wechat.pojo
 server:
   port: 8080
