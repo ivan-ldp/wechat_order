@@ -1,10 +1,13 @@
 package com.kgc.wechatorder.wechat.pojo;
 
+import org.apache.ibatis.type.Alias;
+
 import java.util.Date;
 
 /**
  * 用户表
  */
+@Alias("User")
 public class User {
     private  int userId;//主键
     private String openID;

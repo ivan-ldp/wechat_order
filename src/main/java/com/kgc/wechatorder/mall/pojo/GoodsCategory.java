@@ -1,10 +1,13 @@
 package com.kgc.wechatorder.mall.pojo;
 
+import org.apache.ibatis.type.Alias;
+
 import java.util.Date;
 
 /**
  * 商品种类表
  */
+@Alias("GoodsCategory")
 public class GoodsCategory {
     private  int categoryId;//主键
     private String categoryName;//种类名称
