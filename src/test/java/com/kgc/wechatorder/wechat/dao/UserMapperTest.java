@@ -1,5 +1,6 @@
 package com.kgc.wechatorder.wechat.dao;
 
+import cn.binarywang.wx.miniapp.api.WxMaService;
 import com.kgc.wechatorder.wechat.pojo.User;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,6 +20,7 @@ import static org.junit.Assert.*;
 @SpringBootTest
 @RunWith(SpringRunner.class)
 public class UserMapperTest {
+
 
     @Resource
     private UserMapper userMapper;
