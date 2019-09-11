@@ -17,6 +17,15 @@ public class Goods {
     private float price;//单价
     private Date createTime;//创建时间
     private Date updateTime;//更新时间
+    private int userId;//关联用户表的主键
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
     public int getGoodsId() {
         return goodsId;
@@ -120,6 +129,7 @@ public class Goods {
                 ", price=" + price +
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
+                ", userId=" + userId +
                 '}';
     }
 }

@@ -5,7 +5,7 @@
 <mapper namespace="com.kgc.wechatorder.wechat.dao.UserTokenMapper">
     <insert id="save" parameterType="UserToken">
     insert into user_token(user_id, token, expire_time, update_time)
-    values (user_id=#{userId}, token=#{token}, expire_time=#{expireTime}, update_time=#{updateTime})
+    values (#{userId}, #{token}, #{expireTime}, #{updateTime})
     </insert>
     <update id="update">
         update user_token

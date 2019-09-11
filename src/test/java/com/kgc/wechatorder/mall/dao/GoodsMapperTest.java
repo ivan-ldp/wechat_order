@@ -31,7 +31,7 @@ public class GoodsMapperTest {
 
     @Test
     public void findGoodsListById2() {
-        List<Goods>list=goodsMapper.findGoodsListById2("百",1,65,0,2);
+        List<Goods>list=goodsMapper.findGoodsListById2("百",1,6,1,2,1);
         for(Goods goods:list){
             System.out.println(goods);
         }
@@ -81,7 +81,7 @@ public class GoodsMapperTest {
 
     @Test
     public void getGoodsCount() {
-        int count=goodsMapper.getGoodsCount("百");
+        int count=goodsMapper.getGoodsCount("百",1,1,1);
         System.out.println("++++++++++++++++++++++++"+count);
     }
 }

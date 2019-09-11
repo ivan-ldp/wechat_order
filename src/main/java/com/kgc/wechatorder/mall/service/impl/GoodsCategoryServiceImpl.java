@@ -15,4 +15,19 @@ public class GoodsCategoryServiceImpl implements GoodsCategoryService {
     public List<GoodsCategory> findAllGoodsCategory() {
         return goodsCategoryMapper.findAllGoodsCategory();
     }
+
+    @Override
+    public int add(GoodsCategory goodsCategory) {
+        return goodsCategoryMapper.add(goodsCategory);
+    }
+
+    @Override
+    public int delete(int categoryId) {
+        return goodsCategoryMapper.delete(categoryId);
+    }
+
+    @Override
+    public int modify(GoodsCategory goodsCategory) {
+        return goodsCategoryMapper.modify(goodsCategory);
+    }
 }
