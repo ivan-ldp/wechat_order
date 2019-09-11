@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kgc.wechatorder.mall.dao.DingDanDetailsMapper">
+    <sql id="table_name">
+        dingdan_details
+    </sql>
+        <select id="getDingDanDetailsById" parameterType="int" resultType="com.kgc.wechatorder.mall.pojo.DingDanDetails">
+            select d.*,y.cpNum
+            from dingdan d,coupon y
+            where d.cpId=y.cpId
+        </select>
+</mapper>
