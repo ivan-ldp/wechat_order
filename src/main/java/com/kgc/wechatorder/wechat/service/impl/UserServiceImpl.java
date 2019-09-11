@@ -16,8 +16,21 @@ public class UserServiceImpl implements UserService {
 
     @Resource
     private UserMapper userMapper;
+
     @Override
-    public User info() {
-        return userMapper.info();
+    public User queryByOpenId(String openID) {
+        if (null==openID||openID==""){
+            return null;
+        }
+        User user = userMapper.queryByOpenId(openID);
+        if (null==user){
+            return null;
+        }
+        return user;
+    }
+
+    @Override
+    public User queryByUserId(String userId) {
+        return userMapper.queryByUserId(userId);
     }
 }

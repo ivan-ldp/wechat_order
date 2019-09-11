@@ -6,7 +6,13 @@ spring:
     password: 123
     url: jdbc:mysql:///wechat_diancan
 mybatis:
+#扫描mapper文件
   mapper-locations: mapper/**/**.xml
-  type-aliases-package: com.kgc.wechatorder.wechat.pojo
+#别名
+  type-aliases-package: com.kgc.wechatorder.wechat.pojo com.kgc.wechatorder.mall.pojo com.kgc.wechatorder.sys.pojo
+#打印sql 驼峰命名
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
 server:
   port: 8080

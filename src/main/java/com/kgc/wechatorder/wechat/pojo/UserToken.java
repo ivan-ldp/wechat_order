@@ -1,10 +1,13 @@
 package com.kgc.wechatorder.wechat.pojo;
 
+import org.apache.ibatis.type.Alias;
+
 import java.util.Date;
 
 /**
  * 用户Token表
  */
+@Alias("UserToken")
 public class UserToken {
     private  int id;
     private int userId;//关联用户主键

@@ -9,5 +9,10 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface UserMapper {
-    User info();
+
+    User queryByOpenId(String openID);
+    User queryByUserId(String userId);
+    int save(User user);
+    int update(User user);
+
 }

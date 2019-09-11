@@ -3,7 +3,26 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <!--映射文件的命名空间，为mapper.xml所有的目录完全限定名加文件名-->
 <mapper namespace="com.kgc.wechatorder.wechat.dao.UserMapper">
-    <select id="info" resultType="User">
-        select * from user
+    <insert id="save">
+        insert into user(openID, loginInfo, gender, createTime, phoneNumber, headImg, nickName)
+        values (#{openID},#{loginInfo},#{gender},#{createTime},#{phoneNumber},#{headImg},#{nickName})
+    </insert>
+    <update id="update">
+    update user
+    <trim prefix="set" suffixOverrides="," suffix="where userId=#{userId}">
+        <if test="openID!=null || openID!=''">openID=#{openID},</if>
+        <if test="loginInfo!=null || loginInfo!=''">loginInfo=#{loginInfo},</if>
+        <if test="gender!=null || gender!=''">gender=#{gender},</if>
+        <if test="createTime!=null || createTime!=''">createTime=#{createTime},</if>
+        <if test="phoneNumber!=null || phoneNumber!=''">phoneNumber=#{phoneNumber},</if>
+        <if test="headImg!=null || headImg!=''">headImg=#{headImg},</if>
+        <if test="nickName!=null || nickName!=''">nickName=#{nickName},</if>
+    </trim>
+    </update>
+    <select id="queryByOpenId" resultType="User">
+        select * from user where openID=#{openID}
+    </select>
+    <select id="queryByUserId" resultType="User">
+        select * from user where userId=#{userId}
     </select>
 </mapper>
