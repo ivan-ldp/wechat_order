@@ -27,6 +27,9 @@
             <if test="status!=null">
                 and gs.status=#{status}
             </if>
+            <if test="categoryId!=null">
+                and gs.categoryId=#{categoryId}
+            </if>
         </trim>
         order by xiaoLiang DESC limit #{currentPageNo},#{pageSize}
     </select>
@@ -41,7 +44,7 @@
     </update>
     <!--增加商品-->
     <insert id="add" parameterType="com.kgc.wechatorder.mall.pojo.Goods" >
-      insert into goods values (#{goodsId},#{categoryId},#{goodsName},#{picUrl},#{description},#{xiaoLiang},#{remains},
+      insert into goods values (#{categoryId},#{goodsName},#{picUrl},#{description},#{xiaoLiang},#{remains},
       #{status},#{price},#{createTime},#{updateTime})
     </insert>
     <!--修改商品-->
@@ -49,7 +52,7 @@
         update goods
         <trim prefix="set" suffixOverrides="," suffix="where goodsId=#{goodsId}">
             <if test="categoryId!= null">categoryId=#{categoryId},</if>
-            <if test="goodsName!= null">supportROM=#{supportROM},</if>
+            <if test="goodsName!= null">goodsName=#{goodsName},</if>
             <if test="picUrl != null">picUrl=#{picUrl},</if>
             <if test="description != null">description=#{description},</if>
             <if test="xiaoLiang != null">xiaoLiang=#{xiaoLiang},</if>
@@ -66,6 +69,20 @@
     </delete>
     <!--通过商品名称来获取数量-->
     <select id="getGoodsCount" resultType="int">
-        select count(1) from goods gs where gs.goodsName like CONCAT ('%',#{goodsName},'%')
+        select count(1) from goods gs
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="goodsName !=null || goodsName !=''">
+                and gs.goodsName like CONCAT ('%',#{goodsName},'%')
+            </if>
+            <if test="status!=null">
+                and gs.status=#{status}
+            </if>
+            <if test="categoryId!=null">
+                and gs.categoryId=#{categoryId}
+            </if>
+            <if test="uid!=null">
+                and gs.uid=#{uid}
+            </if>
+        </trim>
     </select>
 </mapper>

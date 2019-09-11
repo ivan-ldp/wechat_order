@@ -6,4 +6,21 @@
     <select id="findAllGoodsCategory" resultType="com.kgc.wechatorder.mall.pojo.GoodsCategory">
         select categoryName from goods_category
     </select>
+    <insert id="add" parameterType="com.kgc.wechatorder.mall.pojo.GoodsCategory" >
+      insert into goods_category values (#{categoryName},#{picUrl},
+      #{createTime},#{updateTime})
+    </insert>
+    <update id="modify" parameterType="com.kgc.wechatorder.mall.pojo.GoodsCategory" >
+        update goods_category
+        <trim prefix="set" suffixOverrides="," suffix="where goodsId=#{goodsId}">
+            <if test="categoryId!= null">categoryId=#{categoryId},</if>
+            <if test="categoryName!= null">categoryName=#{categoryName},</if>
+            <if test="picUrl != null">picUrl=#{picUrl},</if>
+            <if test="createTime != null">createTime=#{createTime},</if>
+            <if test="updateTime != null">updateTime=#{updateTime},</if>
+        </trim>
+    </update>
+    <delete id="delete" parameterType="int"  >
+     delete  from goods_category where categoryId=#{categoryId}
+    </delete>
 </mapper>

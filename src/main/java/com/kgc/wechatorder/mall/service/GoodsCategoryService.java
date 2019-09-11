@@ -12,4 +12,22 @@ public interface GoodsCategoryService {
      */
     List<GoodsCategory> findAllGoodsCategory();
 
+    /**
+     * 增加商品分类
+     * @param
+     * @return
+     */
+    public int add(GoodsCategory goodsCategory);
+    /**
+     * 删除商品分类
+     * @param
+     * @return
+     */
+    public int delete(int categoryId);
+    /**
+     * 更改商品分类
+     * @param
+     * @return
+     */
+    public int modify(GoodsCategory goodsCategory);
 }

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
 @Service
-public class GoodsMapperImpl implements GoodsMapper {
+public class GoodsServiceImpl implements GoodsMapper {
     @Resource
     private GoodsMapper goodsMapper;
     @Override
@@ -16,10 +16,9 @@ public class GoodsMapperImpl implements GoodsMapper {
     }
 
     @Override
-    public List<Goods> findGoodsListById2(String goodsName, int status, int xiaoLiang, int currentPageNo, int pageSize) {
-        return goodsMapper.findGoodsListById2(goodsName,status,xiaoLiang,currentPageNo,pageSize);
+    public List<Goods> findGoodsListById2(String goodsName, int status, int categoryId, int uid, int currentPageNo, int pageSize) {
+        return goodsMapper.findGoodsListById2(goodsName,status,categoryId,uid,currentPageNo,pageSize);
     }
-
     @Override
     public Goods getGoodsById(int goodsId) {
         return goodsMapper.getGoodsById(goodsId);
@@ -46,7 +45,9 @@ public class GoodsMapperImpl implements GoodsMapper {
     }
 
     @Override
-    public int getGoodsCount(String goodsName) {
-        return goodsMapper.getGoodsCount(goodsName);
+    public int getGoodsCount(String goodsName, int status, int categoryId, int uid) {
+     return goodsMapper.getGoodsCount(goodsName,status,categoryId,uid);
     }
+
+
 }
