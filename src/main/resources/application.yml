@@ -10,7 +10,7 @@ mybatis:
   mapper-locations: mapper/**/**.xml
 #别名
   type-aliases-package: com.kgc.wechatorder.wechat.pojo com.kgc.wechatorder.mall.pojo com.kgc.wechatorder.sys.pojo
-#打印日志
+#打印sql 驼峰命名
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     map-underscore-to-camel-case: true
