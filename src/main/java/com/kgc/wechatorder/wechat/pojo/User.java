@@ -17,6 +17,16 @@ public class User {
     private String headImg;//头像
     private String nickName;//昵称
 
+    private String phoneNumber;//电话
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
     public int getUserId() {
         return userId;
     }
@@ -83,6 +93,7 @@ public class User {
                 ", createTime=" + createTime +
                 ", headImg='" + headImg + '\'' +
                 ", nickName='" + nickName + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
     }
 }

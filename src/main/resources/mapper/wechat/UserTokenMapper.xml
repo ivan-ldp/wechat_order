@@ -3,5 +3,23 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <!--映射文件的命名空间，为mapper.xml所有的目录完全限定名加文件名-->
 <mapper namespace="com.kgc.wechatorder.wechat.dao.UserTokenMapper">
+    <insert id="save" parameterType="UserToken">
+    insert into user_token(user_id, token, expire_time, update_time)
+    values (user_id=#{userId}, token=#{token}, expire_time=#{expireTime}, update_time=#{updateTime})
+    </insert>
+    <update id="update">
+        update user_token
+        <trim prefix="set" suffixOverrides="," suffix="where userId=#{userId}">
+            <if test="token!=null || token!=''">token=#{token},</if>
+            <if test="expireTime!=null || expireTime!=''">expireTime=#{expireTime},</if>
+            <if test="updateTime!=null || updateTime!=''">updateTime=#{updateTime},</if>
+        </trim>
+    </update>
 
+    <select id="queryByUserId" resultType="UserToken">
+    select * from user_token where userId=#{userId}
+    </select>
+    <select id="queryByToken" resultType="UserToken">
+    select * from user_token where token=#{token}
+    </select>
 </mapper>
