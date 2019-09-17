@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>后台管理</title>
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<link rel="stylesheet" type="text/css" href="css/main.css" />
+		<script type="text/javascript" src="js/libs/modernizr.min.js"></script>
+	</head>
+
+	<body>
+		<div class="topbar-wrap white">
+			<div class="topbar-inner clearfix">
+				<div class="topbar-logo-wrap clearfix">
+					<h1 class="topbar-logo none"><a href="index.html" class="navbar-brand">后台管理</a></h1>
+					<ul class="navbar-list clearfix">
+						<li>
+							<a class="on" href="design.html">首页</a>
+						</li>
+						<li>
+							<a target="_blank">风味小店</a>
+						</li>
+					</ul>
+				</div>
+				<div class="top-info-wrap">
+					<ul class="top-info-list clearfix">
+						<li><a href="#">管理员</a></li>
+                <li><a href="#">修改密码</a></li>
+                <li><a href="#">退出</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="container clearfix">
+			<div class="sidebar-wrap">
+				<div class="sidebar-title">
+					<h1>菜单</h1>
+				</div>
+				<div class="sidebar-content">
+
+					 <ul class="sidebar-list">
+                <li>
+                    <a href="#"><i class="icon-font">&#xe003;</i>常用操作</a>
+                    <ul class="sub-menu">
+                        <li><a href="design.html"><i class="icon-font">&#xe008;</i>商品管理</a></li>
+                        <li><a href="classify.html"><i class="icon-font">&#xe006;</i>分类管理</a></li>
+                        <li><a href="order.html"><i class="icon-font">&#xe005;</i>订单管理</a></li>
+                        <li><a href="advertising.html"><i class="icon-font">&#xe033;</i>广告管理</a></li>
+                        <li><a href="#"><i class="icon-font">&#xe052;</i>活动管理</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="icon-font">&#xe018;</i>商城管理</a>
+                    <ul class="sub-menu">
+                        <li><a href="shop.html"><i class="icon-font">&#xe017;</i>店铺管理</a></li>
+                        <li><a href="wechat.html"><i class="icon-font">&#xe046;</i>微信设置</a></li>
+                        <li><a href="#"><i class="icon-font">&#xe037;</i>营业额统计</a></li>
+                    </ul>
+                </li>
+            </ul>
+				</div>
+			</div>
+			<!--/sidebar-->
+			<div class="main-wrap">
+
+				<div class="crumb-wrap">
+					<div class="crumb-list"><i class="icon-font"></i>
+						<a href="design.html">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">轮播图管理</span></div>
+				</div>
+				<div class="search-wrap">
+					<div class="search-content">
+						<form action="/jscss/admin/design/index" method="post">
+							<table class="search-tab">
+								<tr>
+									<th width="120"style="font-size: 35px;">列表</th>
+									
+								</tr>
+							</table>
+						</form>
+					</div>
+				</div>
+				<div class="result-wrap">
+					<form name="myform" id="myform" method="post">
+						<div class="result-title">
+							<div class="result-list">
+								<a href="insertAdvertising.html"><i class="icon-font"></i>新增轮播图</a>
+								<a id="batchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</a>
+								<a id="updateOrd" href="javascript:void(0)"><i class="icon-font"></i>更新排序</a>
+							</div>
+						</div>
+						<div class="result-content">
+							<table class="result-tab" width="100%">
+								<tr>
+									<th class="tc" width="5%">选择</th>
+									<th>ID</th>
+									<th>图片名称</th>
+									<th>展示图</th>
+									
+									<th>操作</th>
+								</tr>
+								<tr>
+									<td class="tc"><input name="id[]" value="59" type="checkbox"></td>
+									
+									<td>59</td>
+									<td title="羊肉串">
+										<a target="_blank" href="#" title="羊肉串">羊肉串</a>
+									</td>
+									<td><img src="images/ms2.jpeg" style="height: 86px; width: 120px;" /></td>
+									
+									<td>
+										<a class="link-update" href="amendAdvertising.html">修改</a>
+										<a class="link-del" href="#">删除</a>
+									</td>
+								</tr>
+								<tr>
+									<td class="tc"><input name="id[]" value="58" type="checkbox"></td>
+									
+									<td>58</td>
+									<td title="羊肉串">
+										<a target="_blank" href="#" title="龙虾">龙虾</a>
+									</td>
+									<td><img src="images/ms1.jpeg" style="height: 86px; width: 120px;" /></td>
+									
+									<td>
+										<a class="link-update" href="" >修改</a>
+										<a class="link-del" href="#">删除</a>
+									</td>
+								</tr>
+							</table>
+							<div class="list-page"> 2 条 1/1 页</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<!--/main-->
+		</div>
+	</body>
+
+</html>
