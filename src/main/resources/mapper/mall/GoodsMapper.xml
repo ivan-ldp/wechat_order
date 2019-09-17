@@ -11,6 +11,8 @@
         <result property="remains" column="remains"/>
         <result property="price" column="price"/>
         <result property="status" column="status"/>
+        <result property="createTime" column="createTime"/>
+        <result property="updateTime" column="updateTime"/>
     </resultMap>
     <!--通过id来查询商品-->
     <select id="findGoodsListById1" parameterType="int" resultMap="list">
@@ -21,13 +23,13 @@
     <select id="findGoodsListById2" resultMap="list">
         select gs.* from goods gs
         <trim prefix="where" prefixOverrides="and | or">
-            <if test="goodsName !=null || goodsName !=''">
+            <if test="goodsName !=null and goodsName !=''">
                 and gs.goodsName like CONCAT ('%',#{goodsName},'%')
             </if>
-            <if test="status!=null">
+            <if test=" status !=0 ">
                 and gs.status=#{status}
             </if>
-            <if test="categoryId!=null">
+            <if test=" categoryId !=0 ">
                 and gs.categoryId=#{categoryId}
             </if>
         </trim>
@@ -44,7 +46,7 @@
     </update>
     <!--增加商品-->
     <insert id="add" parameterType="com.kgc.wechatorder.mall.pojo.Goods" >
-      insert into goods values (#{categoryId},#{goodsName},#{picUrl},#{description},#{xiaoLiang},#{remains},
+      insert into goods values (#{goodsId},#{categoryId},#{goodsName},#{picUrl},#{description},#{xiaoLiang},#{remains},
       #{status},#{price},#{createTime},#{updateTime})
     </insert>
     <!--修改商品-->
@@ -65,7 +67,7 @@
     </update>
     <!--凭借id来删除商品-->
     <delete id="deleteGoodsById">
-      delete from goods where id=#{goodsId}
+      delete from goods where goodsId=#{goodsId}
     </delete>
     <!--通过商品名称来获取数量-->
     <select id="getGoodsCount" resultType="int">
@@ -74,14 +76,11 @@
             <if test="goodsName !=null || goodsName !=''">
                 and gs.goodsName like CONCAT ('%',#{goodsName},'%')
             </if>
-            <if test="status!=null">
+            <if test="status!=0">
                 and gs.status=#{status}
             </if>
-            <if test="categoryId!=null">
+            <if test="categoryId!=0">
                 and gs.categoryId=#{categoryId}
-            </if>
-            <if test="uid!=null">
-                and gs.uid=#{uid}
             </if>
         </trim>
     </select>

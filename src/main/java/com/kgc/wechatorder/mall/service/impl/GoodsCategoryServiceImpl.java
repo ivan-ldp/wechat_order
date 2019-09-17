@@ -3,6 +3,7 @@ package com.kgc.wechatorder.mall.service.impl;
 import com.kgc.wechatorder.mall.dao.GoodsCategoryMapper;
 import com.kgc.wechatorder.mall.pojo.GoodsCategory;
 import com.kgc.wechatorder.mall.service.GoodsCategoryService;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -29,5 +30,10 @@ public class GoodsCategoryServiceImpl implements GoodsCategoryService {
     @Override
     public int modify(GoodsCategory goodsCategory) {
         return goodsCategoryMapper.modify(goodsCategory);
+    }
+
+    @Override
+    public GoodsCategory findGoodsCategory(int categoryId) {
+        return goodsCategoryMapper.findGoodsCategory(categoryId);
     }
 }

@@ -16,7 +16,12 @@ public interface GoodsCategoryMapper {
      * @return
      */
     List<GoodsCategory> findAllGoodsCategory();
-
+    /**
+     * 获取所有的商品分类凭借Id
+     * @param categoryId
+     * @return
+     */
+    GoodsCategory findGoodsCategory(int categoryId);
     /**
      * 增加商品分类
      * @param
