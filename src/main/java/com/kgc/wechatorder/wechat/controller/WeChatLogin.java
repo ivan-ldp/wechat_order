@@ -31,6 +31,15 @@ public class WeChatLogin {
     @Resource
     private UserService userService;
 
+    /**
+     * 小程序授权
+     * @param request
+     * @param code
+     * @param encryptedData
+     * @param iv
+     * @return
+     * @throws UnsupportedEncodingException
+     */
     @GetMapping("/wxLogin")
     public Map<String, Object> mini_Login(HttpServletRequest request, @Param("code") String code, @Param("encryptedData") String encryptedData, @Param("iv") String iv) throws UnsupportedEncodingException {
         //String c=request.getParameter("code");//也可以通过此语句获取code值

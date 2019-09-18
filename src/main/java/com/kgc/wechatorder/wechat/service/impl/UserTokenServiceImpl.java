@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
+ * UserTokenServiceImpl 用户token实现层
  * Created By Ivan_ldp@163.com on 2019/9/10 16:20
  */
 @Service
@@ -23,23 +24,41 @@ public class UserTokenServiceImpl implements UserTokenService {
     @Resource
     private UserTokenMapper userTokenMapper;
 
+    /**
+     * 按userId查询token表
+     * @param userId
+     * @return
+     */
     @Override
     public UserToken queryByUserId(int userId) {
         return userTokenMapper.queryByUserId(userId);
     }
 
+    /**
+     * 按token查询token表
+     * @param token
+     * @return
+     */
     @Override
     public UserToken queryByToken(String token) {
         return userTokenMapper.queryByToken(token);
     }
 
+    /**
+     * 保存token
+     * @param userToken
+     * @return
+     */
     @Override
     public int save(UserToken userToken) {
-
-
         return userTokenMapper.save(userToken);
     }
 
+    /**
+     * 更新token
+     * @param userToken
+     * @return
+     */
     @Override
     public int update(UserToken userToken) {
         return userTokenMapper.update(userToken);
@@ -60,7 +79,6 @@ public class UserTokenServiceImpl implements UserTokenService {
         //过期时间
         Date expireTime = new Date(now.getTime() + EXPIRE * 1000);
         //判断是否生成过token
-        //方法调用不合适    等下在更改
         // userTokenMapper.queryByToken(token)
         UserToken userToken =userTokenMapper.queryByUserId(userId);
         if (null==userToken){

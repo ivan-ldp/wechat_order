@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 
 /**
+ * 用户Service实现层
  * Created By Ivan_ldp@163.com on 2019/9/10 9:55
  */
 @Service
@@ -17,6 +18,11 @@ public class UserServiceImpl implements UserService {
     @Resource
     private UserMapper userMapper;
 
+    /**
+     * 按openID查询用户信息
+     * @param openID
+     * @return
+     */
     @Override
     public User queryByOpenId(String openID) {
         if (null==openID||openID==""){
@@ -29,16 +35,31 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+    /**
+     * 按userId查询用户信息
+     * @param userId
+     * @return
+     */
     @Override
     public User queryByUserId(String userId) {
         return userMapper.queryByUserId(userId);
     }
 
+    /**
+     * 添加用户信息
+     * @param user
+     * @return
+     */
     @Override
     public int save(User user) {
         return userMapper.save(user);
     }
 
+    /**
+     * 更新用户信息
+     * @param user
+     * @return
+     */
     @Override
     public int update(User user) {
         return userMapper.update(user);
