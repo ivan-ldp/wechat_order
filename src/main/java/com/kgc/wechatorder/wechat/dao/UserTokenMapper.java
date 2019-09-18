@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface UserTokenMapper {
-    UserToken queryByUserId(String userId);
+    UserToken queryByUserId(Integer userId);
     UserToken queryByToken(String token);
     int save(UserToken userToken);
     int update(UserToken userToken);

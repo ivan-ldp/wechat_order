@@ -5,6 +5,17 @@ spring:
     username: root
     password: 123
     url: jdbc:mysql:///wechat_diancan
+  ####  thymeleaf配置   #######
+  #thymeleaf start
+  thymeleaf:
+    mode: HTML5
+    encoding: utf-8
+    servlet:
+      content-type: text/html
+    #开发时关闭缓存,不然没法看到实时页面
+    cache: false
+  #thymeleaf end
+
 mybatis:
 #扫描mapper文件
   mapper-locations: mapper/**/**.xml
