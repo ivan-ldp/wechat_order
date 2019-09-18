@@ -4,8 +4,19 @@
     <sql id="table_name">
         dingdan_details
     </sql>
-        <select id="getDingDanDetailsById" parameterType="int" resultType="com.kgc.wechatorder.mall.pojo.DingDanDetails">
-            select d.*,y.cpNum
+    <resultMap id="list" type="com.kgc.wechatorder.mall.pojo.DingDanDetails">
+
+        <result property="orderNumber" column="orderNumber"/>
+        <result property="totalPrices" column="totalPrices"/>
+        <result property="orderStatus" column="orderStatus"/>
+        <result property="beizhu" column="beizhu"/>
+        <result property="deliverTime" column="deliverTime"/>
+        <result property="receiptTime" column="receiptTime"/>
+
+    </resultMap>
+        <!--订单和优惠卷今行连表查询-->
+        <select id="getDingDanDetailsById" parameterType="int" resultMap="list">
+            select d.*,y.*
             from dingdan d,coupon y
             where d.cpId=y.cpId
         </select>

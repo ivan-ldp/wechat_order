@@ -30,11 +30,10 @@ public interface GoodsMapper {
      * @return
      */
     public List<Goods> findGoodsListById2(@Param("goodsName") String goodsName,
-                                          @Param("status") int status,
-                                          @Param("categoryId") int categoryId,
-                                          @Param("uid") int uid,
-                                          @Param("currentPageNo") int currentPageNo,
-                                          @Param("pageSize") int pageSize);
+                                          @Param("status") Integer status,
+                                          @Param("categoryId") Integer categoryId,
+                                          @Param("currentPageNo") Integer currentPageNo,
+                                          @Param("pageSize") Integer pageSize);
 
     /**
      * 按商品id查询
@@ -83,11 +82,9 @@ public interface GoodsMapper {
      * @param goodsName
      * @param status
      * @param categoryId
-     * @param uid
      * @return
      */
     public int getGoodsCount(@Param("goodsName") String goodsName,
                              @Param("status") int status,
-                             @Param("categoryId") int categoryId,
-                             @Param("uid") int uid);
+                             @Param("categoryId") int categoryId);
 }

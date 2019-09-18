@@ -3,11 +3,16 @@ package com.kgc.wechatorder.mall.service.impl;
 import com.kgc.wechatorder.mall.dao.DingDanDeliveryMapper;
 import com.kgc.wechatorder.mall.pojo.DingDanDelivery;
 import com.kgc.wechatorder.mall.service.DingDanDeliveryService;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+
+@Service
 public class DingDanDeliveryImpl implements DingDanDeliveryService {
-    private DingDanDeliveryService dingDanDeliveryService;
+    @Resource
+    private DingDanDeliveryMapper dingDanDeliveryMapper;
     @Override
-    public boolean getDingDanDeliveryById(Integer id) {
+    public DingDanDelivery getDingDanDeliveryById(Integer id) {
 
         if(id==null||id.equals("")){
             try {
@@ -18,6 +23,7 @@ public class DingDanDeliveryImpl implements DingDanDeliveryService {
                 System.out.println("异常类型为空指针异常");
             }
         }
-        return this.dingDanDeliveryService.getDingDanDeliveryById(id);
+        DingDanDelivery dingDanDeliveryById = this.dingDanDeliveryMapper.getDingDanDeliveryById(id);
+        return dingDanDeliveryById;
     }
 }

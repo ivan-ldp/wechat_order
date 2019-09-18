@@ -5,6 +5,7 @@
     <sql id="table_name">
         dingdan_delivery
     </sql>
+        <!--凭id对订单进行查询-->
         <select id="getDingDanDeliveryById" parameterType="int" resultType="com.kgc.wechatorder.mall.pojo.DingDanDelivery">
             select * from <include refid="table_name"/>
                 where id=#{id}

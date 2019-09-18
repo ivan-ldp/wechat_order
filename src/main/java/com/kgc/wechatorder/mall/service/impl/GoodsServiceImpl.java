@@ -2,12 +2,14 @@ package com.kgc.wechatorder.mall.service.impl;
 
 import com.kgc.wechatorder.mall.dao.GoodsMapper;
 import com.kgc.wechatorder.mall.pojo.Goods;
+import com.kgc.wechatorder.mall.service.GoodsService;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 @Service
-public class GoodsServiceImpl implements GoodsMapper {
+public class GoodsServiceImpl implements GoodsService {
     @Resource
     private GoodsMapper goodsMapper;
     @Override
@@ -16,9 +18,10 @@ public class GoodsServiceImpl implements GoodsMapper {
     }
 
     @Override
-    public List<Goods> findGoodsListById2(String goodsName, int status, int categoryId, int uid, int currentPageNo, int pageSize) {
-        return goodsMapper.findGoodsListById2(goodsName,status,categoryId,uid,currentPageNo,pageSize);
+    public List<Goods> findGoodsListById2(String goodsName, Integer status, Integer categoryId, Integer currentPageNo, Integer pageSize) {
+        return goodsMapper.findGoodsListById2(goodsName,status,categoryId,currentPageNo,pageSize);
     }
+
     @Override
     public Goods getGoodsById(int goodsId) {
         return goodsMapper.getGoodsById(goodsId);
@@ -45,8 +48,8 @@ public class GoodsServiceImpl implements GoodsMapper {
     }
 
     @Override
-    public int getGoodsCount(String goodsName, int status, int categoryId, int uid) {
-     return goodsMapper.getGoodsCount(goodsName,status,categoryId,uid);
+    public int getGoodsCount(String goodsName, int status, int categoryId) {
+     return goodsMapper.getGoodsCount(goodsName,status,categoryId);
     }
 
 

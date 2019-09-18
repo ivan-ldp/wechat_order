@@ -6,11 +6,33 @@
     <sql id="table_name">
         dingdan
     </sql>
-    <!--根据id查询用户订单所有信息-->
+    <!--增加新订单-->
     <insert id="addDingDan" parameterType="com.kgc.wechatorder.mall.pojo.DingDan">
         insert into dingdan(userId,orderNumber,totalPrices,orderStatus,beizhu,deliverTime,receiptTime,cpId)
         values (#{userId},#{orderNumber},#{totalPrices},#{orderStatus},#{beizhu},#{delierTime},#{receiptTime},#{cpId})
     </insert>
     <delete id="addUser"></delete>
-
+    <!--增加新的订单配送表-->
+    <insert id="addDingDanDelivery" parameterType="com.kgc.wechatorder.mall.pojo.DingDanDelivery">
+        insert into dingdan_delivery(orderId,contact,provinced,provinceName,cityId,cityName,districtId,districtName,address,beginTime,estimateTime,endTime)
+        values (#{orderId},#{contact},#{provinced},#{provinceName},#{cityId},#{cityName},#{districtId},#{districtName},#{address},#{beginTime},#{estimateTime},#{endTime})
+    </insert>
+    <!--增加新的订单详情表-->
+    <insert id="addDingDanDetails" parameterType="com.kgc.wechatorder.mall.pojo.DingDanDetails">
+        insert into dingdan_details(orderId,goodsId,goodsName,number,picpath,prices)values
+        (#{orderId},#{goodsId},#{goodsName},#{number},#{picpath},#{prices})
+    </insert>
+    <!--凭id查询商品-->
+    <select id="selectGoodsById" parameterType="com.kgc.wechatorder.mall.pojo.Goods" resultType="com.kgc.wechatorder.mall.pojo.Goods">
+        select * from goods
+        <trim prefix="WHERE" prefixOverrides="and | or">
+<!--     //goodsId!=0-->
+            <if test="goodsId!=0 and goodsId != ''">
+                and goodsId=#{goodsId}
+            </if>
+            <if test="goodsName != null and goodsName != ''">
+                and userName like CONCAT('%',#{goodsName} ,'%')
+            </if>
+        </trim>
+    </select>
 </mapper>

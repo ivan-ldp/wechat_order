@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<form th:action="@{/goods/toGoodsList}"  method="post">
+<div class="goods_list" >
+    <p>请输入商品名称<input type="text" id="goodsName"></p>
+    <p>请选择商品分类<select id="goods_sort">
+
+    </select>
+    </p>
+    <p>请选择商品上架状态<select id="goods_status">
+
+
+        <!--<option th:each="status:${session.statusList}" th:value="${status.valueId}" th:text="${status.valueName}"></option>-->
+    </select>
+    </p>
+    <p> <a href="/goods/goodsAdd">增加商品</a></p>
+    <table>
+        <thead>
+        <tr class="tr_border">
+            <td>商品编号</td>
+            <td>商品名称</td>
+            <td>商品图片</td>
+            <td>商品描述</td>
+            <td>商品销量</td>
+            <td>商品库存</td>
+            <td>上架状态</td>
+            <td>单价（元）</td>
+            <td>上架时间</td>
+            <td>更改时间</td>
+            <td>操作</td>
+        </tr>
+        </thead>
+        <tbody>
+        <!--<tr th:each="list:${session.list}">-->
+            <!--<td th:text="${list.goodsId}"></td>-->
+            <!--<td th:text="${list.goodsName}"></td>-->
+            <!--<td th:text="${list.picUrl}"></td>-->
+            <!--<td th:text="${list.description}"></td>-->
+            <!--<td th:text="${list.xiaoLiang}"></td>-->
+            <!--<td th:text="${list.remains}"></td>-->
+            <!--<td th:text="${list.status}"></td>7-->
+            <!--<td th:text="${list.price}"></td>-->
+            <!--<td th:text="${list.createTime}"></td>-->
+            <!--<td th:text="${list.updateTime}"></td>-->
+            <!--<td><a href="/goods/modify/+'${list.goodsId}'+">修改</a>-->
+                <!--<a href="/goods/delGoods/+'${list.goodsId}'+">删除</a>-->
+            <!--</td>-->
+        </tbody>
+        <p><span></span></p>
+    </table>
+</div>
+    <input type="button" id="button" value="查询">
+    <!--<input type="submit" id="submit" value="提交">-->
+</form>
+</body>
+<script th:src="@{/js/jquery-3.0.0.js}"></script>
+<script th:src="@{/js/goods_list.js}"></script>
+<link rel="stylesheet" th:href="@{/css/test.css}"/>
+</html>
