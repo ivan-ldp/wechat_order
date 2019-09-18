@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:a="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script th:src="@{/js/jquery-3.0.0.js}"></script>
+    <script th:src="@{/js/goodsSort_list.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/goodsSort_list.css}"/>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th colspan="5" class="fenlei">商品分类</th>
+        <th><a href="/goods/sortadd">增加商品分类</a></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>种类编号</td>
+        <td>种类名称</td>
+        <td>种类图片</td>
+        <td>创建时间</td>
+        <td>更改时间</td>
+        <td>操作</td>
+    </tr>
+    </tbody>
+    <p><span></span></p>
+</table>
+</body>
+</html>

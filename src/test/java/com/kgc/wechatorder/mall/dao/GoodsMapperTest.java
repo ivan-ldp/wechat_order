@@ -1,6 +1,7 @@
 package com.kgc.wechatorder.mall.dao;
 
 import com.kgc.wechatorder.mall.pojo.Goods;
+import com.kgc.wechatorder.mall.service.GoodsService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,7 +20,8 @@ import static org.junit.Assert.*;
 public class GoodsMapperTest {
     @Resource
     private GoodsMapper goodsMapper;
-
+    @Resource
+    private GoodsService goodsService;
     @Test
     public void findGoodsListById1() {
         List<Goods>list=goodsMapper.findGoodsListById1(1);
@@ -31,7 +33,7 @@ public class GoodsMapperTest {
 
     @Test
     public void findGoodsListById2() {
-        List<Goods>list=goodsMapper.findGoodsListById2("百",1,6,1,2,1);
+        List<Goods>list=goodsMapper.findGoodsListById2("",1,1,1,2);
         for(Goods goods:list){
             System.out.println(goods);
         }
@@ -52,7 +54,7 @@ public class GoodsMapperTest {
     @Test
     public void add() throws ParseException {
         Goods goods=new Goods();
-        goods.setGoodsId(6);
+        goods.setGoodsId(7);
         goods.setCategoryId(2);
         goods.setGoodsName("冰红茶");
         goods.setPicUrl("D:url");
@@ -79,9 +81,18 @@ public class GoodsMapperTest {
     public void deleteGoodsById() {
     }
 
+//    @Test
+//    public void getGoodsCount() {
+//        List<Goods> goodsListById2 = goodsService.findGoodsListById2("", "", "",1,3);
+//       for(Goods gs:goodsListById2){
+//           System.out.println(gs);
+//       }
+//    }
     @Test
-    public void getGoodsCount() {
-        int count=goodsMapper.getGoodsCount("百",1,1,1);
-        System.out.println("++++++++++++++++++++++++"+count);
+    public void getGoodsCount2() {
+        List<Goods> goodsListById2 = goodsService.findGoodsListById1(1);
+        for(Goods gs:goodsListById2){
+            System.out.println(gs);
+        }
     }
 }

@@ -4,23 +4,25 @@
 <!--映射文件的命名空间，为mapper.xml所有的目录完全限定名加文件名-->
 <mapper namespace="com.kgc.wechatorder.mall.dao.GoodsCategoryMapper">
     <select id="findAllGoodsCategory" resultType="com.kgc.wechatorder.mall.pojo.GoodsCategory">
-        select categoryName from goods_category
+        select * from goods_category
     </select>
     <insert id="add" parameterType="com.kgc.wechatorder.mall.pojo.GoodsCategory" >
-      insert into goods_category values (#{categoryName},#{picUrl},
-      #{createTime},#{updateTime})
+      insert into goods_category(categoryName,picUrl,createTime) values (#{categoryName},#{picUrl},#{createTime})
     </insert>
-    <update id="modify" parameterType="com.kgc.wechatorder.mall.pojo.GoodsCategory" >
+    <update id="modify" parameterType="com.kgc.wechatorder.mall.pojo.GoodsCategory">
         update goods_category
-        <trim prefix="set" suffixOverrides="," suffix="where goodsId=#{goodsId}">
-            <if test="categoryId!= null">categoryId=#{categoryId},</if>
-            <if test="categoryName!= null">categoryName=#{categoryName},</if>
-            <if test="picUrl != null">picUrl=#{picUrl},</if>
-            <if test="createTime != null">createTime=#{createTime},</if>
-            <if test="updateTime != null">updateTime=#{updateTime},</if>
+        <trim prefix="set" suffixOverrides="," suffix="where categoryId=#{categoryId}">
+            <if test="categoryName != null || categoryName != ''">categoryName=#{categoryName},</if>
+            <if test="picUrl != null || picUrl != ''">picUrl=#{picUrl},</if>
+            <if test="createTime != null || createTime != ''">createTime=#{createTime},</if>
+            <if test="updateTime != null || updateTime != ''">updateTime=#{updateTime},</if>
         </trim>
     </update>
+
     <delete id="delete" parameterType="int"  >
-     delete  from goods_category where categoryId=#{categoryId}
+     delete from goods_category where categoryId=#{categoryId}
     </delete>
+    <select id="findGoodsCategory" parameterType="int" resultType="com.kgc.wechatorder.mall.pojo.GoodsCategory">
+        select * from goods_category where categoryId=#{categoryId}
+    </select>
 </mapper>

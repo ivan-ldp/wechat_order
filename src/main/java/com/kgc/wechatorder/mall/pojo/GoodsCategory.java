@@ -11,15 +11,7 @@ public class GoodsCategory {
     private  String picUrl;//图片路径
     private Date createTime;//创建时间
     private Date updateTime;//更新时间
-    private int userId;//关联用户表的主键
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
 
     public int getCategoryId() {
         return categoryId;
@@ -69,7 +61,6 @@ public class GoodsCategory {
                 ", picUrl='" + picUrl + '\'' +
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
-                ", userId=" + userId +
                 '}';
     }
 }

@@ -24,4 +24,17 @@ private  GoodsCategoryMapper goodsCategoryMapper;
             System.out.println(gc);
         }
     }
+    @Test
+    public void del() {
+        int count=goodsCategoryMapper.delete(5);
+        List<GoodsCategory>list=goodsCategoryMapper.findAllGoodsCategory();
+        for (GoodsCategory gc:list){
+            System.out.println(gc);
+        }
+    }
+    @Test
+    public  void findCategoryList(){
+        GoodsCategory goodsCategory=  goodsCategoryMapper.findGoodsCategory(1);
+        System.out.println(goodsCategory);
+    }
 }

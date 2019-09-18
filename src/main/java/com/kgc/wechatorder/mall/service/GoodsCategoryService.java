@@ -30,4 +30,11 @@ public interface GoodsCategoryService {
      * @return
      */
     public int modify(GoodsCategory goodsCategory);
+
+    /**
+     * 获取所有的商品分类凭借Id
+     * @param categoryId
+     * @return
+     */
+    GoodsCategory findGoodsCategory(int categoryId);
 }
