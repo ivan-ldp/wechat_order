@@ -8,4 +8,6 @@ import com.kgc.wechatorder.wechat.pojo.User;
 public interface UserService {
     User queryByOpenId(String openID);
     User queryByUserId(String userId);
+    int save(User user);
+    int update(User user);
 }
