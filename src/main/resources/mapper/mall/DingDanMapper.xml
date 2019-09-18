@@ -7,7 +7,31 @@
     </sql>
     <!--根据id查询订单信息-->
     <select id="getDingDanById" parameterType="int" resultType="com.kgc.wechatorder.mall.pojo.DingDan">
-        select * from <include refid="table_name"/>
-            where orderid=#{orderid}
+        select * from dingdan
+            <trim prefix="WHERE" prefixOverrides="and|or">
+                <if test="orderid != 0 and orderid!=''">
+                    and orderId=#{orderid}
+                </if>
+                <if test="orderStatus != 0 and orderStatus != ''">
+                    and orderStatus=#{orderStatus}
+                </if>
+            </trim>
     </select>
+    <!--后台查询全部商品-->
+    <select id="selectDingDan" resultType="com.kgc.wechatorder.mall.pojo.DingDan">
+        select * from dingdan
+    </select>
+    <!--更改订单-->
+    <update id="updateDingDan" parameterType="com.kgc.wechatorder.mall.pojo.DingDan">
+        update dingdan
+        <set>
+            <if test="orderNumber!=null ">orderNumber=#{orderNumber},</if>
+            <if test="totalPrices!=null ">totalPrices=#{totalPrices}</if>
+            <if test="orderStatus!=null ">orderStatus=#{orderStatus}</if>
+            <if test="beizhu!=null ">beizhu=#{beizhu}</if>
+            <if test="deliverTime!=null ">deliverTime=#{deliverTime}</if>
+            <if test="receiptTime!=null ">receiptTime=#{receiptTime}</if>
+        </set>
+            where orderId=#{orderid}
+    </update>
 </mapper>

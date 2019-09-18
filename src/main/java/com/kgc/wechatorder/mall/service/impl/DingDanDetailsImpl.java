@@ -1,11 +1,18 @@
 package com.kgc.wechatorder.mall.service.impl;
 
+import com.kgc.wechatorder.mall.dao.DingDanDetailsMapper;
+import com.kgc.wechatorder.mall.pojo.DingDanDetails;
 import com.kgc.wechatorder.mall.service.DingDanDetailsService;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+
+@Service
 public class DingDanDetailsImpl implements DingDanDetailsService {
-    private DingDanDetailsService dingDanDetailsService;
+    @Resource
+    private DingDanDetailsMapper dingDanDetailsMapper;
     @Override
-    public boolean getDingDanDetailsById(Integer id) {
+    public DingDanDetails getDingDanDetailsById(Integer id) {
         if(id==null||id.equals("")){
             try {
                 if(id==null||id.equals(""));
@@ -15,6 +22,6 @@ public class DingDanDetailsImpl implements DingDanDetailsService {
                 System.out.println("异常类型为空指针异常");
             }
         }
-        return this.dingDanDetailsService.getDingDanDetailsById(id);
+        return this.dingDanDetailsMapper.getDingDanDetailsById(id);
     }
 }
