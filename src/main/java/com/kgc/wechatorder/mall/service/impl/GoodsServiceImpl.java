@@ -18,8 +18,8 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    public List<Goods> findGoodsListById2(String goodsName, Integer status, Integer categoryId, Integer currentPageNo, Integer pageSize) {
-        return goodsMapper.findGoodsListById2(goodsName,status,categoryId,currentPageNo,pageSize);
+    public List<Goods> findGoodsListById2(String goodsName, Integer status, Integer categoryId) {
+        return goodsMapper.findGoodsListById2(goodsName,status,categoryId);
     }
 
     @Override
@@ -48,7 +48,7 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    public int getGoodsCount(String goodsName, int status, int categoryId) {
+    public int getGoodsCount(String goodsName, Integer status, Integer categoryId) {
      return goodsMapper.getGoodsCount(goodsName,status,categoryId);
     }
 

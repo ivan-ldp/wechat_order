@@ -21,21 +21,21 @@
     </select>
     <!--对查询的商品进行分页商品-->
     <select id="findGoodsListById2" resultMap="list">
-        select gs.* from goods gs
+        select * from goods
         <trim prefix="where" prefixOverrides="and | or">
             <if test="goodsName !=null and goodsName !=''">
-                and gs.goodsName like CONCAT ('%',#{goodsName},'%')
+                and goodsName like CONCAT ('%',#{goodsName},'%')
             </if>
-            <if test=" status !=0 ">
-                and gs.status=#{status}
+            <if test=" status !=null ">
+                and status=#{status}
             </if>
-            <if test=" categoryId !=0 ">
-                and gs.categoryId=#{categoryId}
+            <if test=" categoryId !=null  ">
+                and categoryId=#{categoryId}
             </if>
         </trim>
-        order by xiaoLiang DESC limit #{currentPageNo},#{pageSize}
+        order by xiaoLiang DESC
     </select>
-    <!--通过ID来查询商品-->
+    <!--通过ID来查询商品limit #{currentPageNo},#{pageSize} -->
     <select id="getGoodsById" parameterType="int" resultType="com.kgc.wechatorder.mall.pojo.Goods">
         select  * from goods where goodsId=#{goodsId}
     </select>
@@ -76,10 +76,10 @@
             <if test="goodsName !=null || goodsName !=''">
                 and gs.goodsName like CONCAT ('%',#{goodsName},'%')
             </if>
-            <if test="status!=0">
+            <if test="status !=null ">
                 and gs.status=#{status}
             </if>
-            <if test="categoryId!=0">
+            <if test="categoryId !=null ">
                 and gs.categoryId=#{categoryId}
             </if>
         </trim>

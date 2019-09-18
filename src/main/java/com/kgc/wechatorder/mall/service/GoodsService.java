@@ -19,16 +19,15 @@ public interface GoodsService {
      *
      * @param goodsName
      * @param status
-     * @param currentPageNo
      * @param categoryId
-     * @param pageSize
      * @return
      */
+//    ,
+//    @Param("currentPageNo") Integer currentPageNo,
+//    @Param("pageSize") Integer pageSize
     public List<Goods> findGoodsListById2(@Param("goodsName") String goodsName,
                                           @Param("status") Integer status,
-                                          @Param("categoryId") Integer categoryId,
-                                          @Param("currentPageNo") Integer currentPageNo,
-                                          @Param("pageSize") Integer pageSize);
+                                          @Param("categoryId") Integer categoryId);
 
     /**
      * 按商品id查询
@@ -79,6 +78,6 @@ public interface GoodsService {
      * @return
      */
     public int getGoodsCount(@Param("goodsName") String goodsName,
-                             @Param("status") int status,
-                             @Param("categoryId") int categoryId);
+                             @Param("status") Integer status,
+                             @Param("categoryId") Integer categoryId);
 }
