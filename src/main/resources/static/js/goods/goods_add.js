@@ -11,7 +11,7 @@ function sortList() {
         url: "/goods/sortList",
         success: function (data) {
            console.info(data)
-            var sortOp = "<option value='' >全部</option>"
+            var sortOp ;
             if (null != data) {
                 $.each(data, function (i, sort) {
                     sortOp += "<option value=" + sort.categoryId + ">" +

@@ -37,6 +37,7 @@ public class GoodsController {
     private StatusService statusService;
     private Goods goods;
     private GoodsCategory goodsCategory;
+    Logger log = Logger.getLogger("GoodsController.class");
 
     /*            获取商品分类列表     */
 
@@ -45,18 +46,19 @@ public class GoodsController {
     public List<GoodsCategory> getSortList() {
         return goodsCategoryService.findAllGoodsCategory();
     }
+
     /*      获取商品状态  */
     @ResponseBody
     @RequestMapping("/statusList")
-    public List<Status>statusList(){
-        List<Status>statusList=statusService.getStatuslist("Goods_Status");
-        return  statusList;
+    public List<Status> statusList() {
+        List<Status> statusList = statusService.getStatuslist("Goods_Status");
+        return statusList;
     }
 
     /*            进入goods_list页面     */
     @RequestMapping("/toGoodsSortList")
     public String toGoodsSortList() {
-        return "goodsSort_list";
+        return "/goods/goods_list";
     }
 
 
@@ -70,22 +72,23 @@ public class GoodsController {
             return "/goodsSort_list";
         } else {
             model.addAttribute("message", Constants.FILEDSHANCHU);
-            return "/goodsSort_list";
+            return "/goods/goodsSort_list";
         }
     }
+
     /*            增加商品分类        */
     @RequestMapping("/sortadd")
     public String addSortList(@ModelAttribute("goodsCategory") GoodsCategory goodsCategory) {
-        return "goodsSort_add";
+        return "/goods/goodsSort_add";
     }
 
     /*            保存商品分类        */
     @RequestMapping("/sortaddSave")
-    public String addSortSave(@ModelAttribute("goodsCategory")GoodsCategory goodsCategory, HttpSession session,
-             HttpServletRequest request, @RequestParam(value ="a_idPicPath", required = false) MultipartFile attach) {
+    public String addSortSave(@ModelAttribute("goodsCategory") GoodsCategory goodsCategory, HttpSession session,
+                              HttpServletRequest request, @RequestParam(value = "a_idPicPath", required = false) MultipartFile attach) {
         String idPicPath = null;
         //判断文件是否为空
-        if(!attach.isEmpty()) {
+        if (!attach.isEmpty()) {
             String path = request.getSession().getServletContext().getRealPath("static" + File.separator + "uploadfiles");
             logger.info("uploadFile path ============== > " + path);
             String oldFileName = attach.getOriginalFilename();//原文件名
@@ -99,7 +102,7 @@ public class GoodsController {
                 return "goodsSort_add";
             } else if (prefix.equalsIgnoreCase("jpg") || prefix.equalsIgnoreCase("png")
                     || prefix.equalsIgnoreCase("jpeg") || prefix.equalsIgnoreCase("pneg")) {//上传图片格式不正确
-                String fileName = System.currentTimeMillis() + RandomUtils.nextInt(1,100000) + "_Personal.jpg";
+                String fileName = System.currentTimeMillis() + RandomUtils.nextInt(1, 100000) + "_Personal.jpg";
                 logger.debug("new fileName======== " + attach.getName());
                 File targetFile = new File(path, fileName);
                 if (!targetFile.exists()) {
@@ -111,21 +114,21 @@ public class GoodsController {
                 } catch (Exception e) {
                     e.printStackTrace();
                     request.setAttribute("uploadFileError", " * 上传失败！");
-                    return "goodsSort_add";
+                    return "/goods/goodsSort_add";
                 }
                 idPicPath = path + File.separator + fileName;
             } else {
                 request.setAttribute("uploadFileError", " * 上传图片格式不正确");
-                return "goodsSort_add";
+                return "/goods/goodsSort_add";
             }
         }
 
         goodsCategory.setCreateTime(new Date());
         goodsCategory.setPicUrl(idPicPath);
         if (goodsCategoryService.add(goodsCategory) > 0) {
-            return "goodsSort_list";
+            return "/goods/goodsSort_list";
         }
-        return "goodsSort_add";
+        return "/goods/goodsSort_add";
     }
 
     /*            修改商品分类        */
@@ -133,39 +136,41 @@ public class GoodsController {
     public String sortModify(@PathVariable("sortId") Integer sortId, Model model) {
         goodsCategory = goodsCategoryService.findGoodsCategory(sortId);
         model.addAttribute("goodsCategory", goodsCategory);
-        return "goodsSort_modify";
+        return "/goods/goodsSort_modify";
     }
 
     /*            修改商品分类保存       */
     @RequestMapping("/modifyGoodsSortSave")
-    public String sortModifySave( @ModelAttribute("goodsCategory") GoodsCategory goodsCategory,Model model) {
-        System.out.println(goodsCategory.toString()+"12333333333333333333");
-        int count=goodsCategoryService.modify(goodsCategory);
-        System.out.println("+++++++++++++++++++++++++="+count);
-        if(count>0){
-            return "goodsSort_list";
+    public String sortModifySave(@ModelAttribute("goodsCategory") GoodsCategory goodsCategory, Model model) {
+        System.out.println(goodsCategory.toString() + "12333333333333333333");
+        int count = goodsCategoryService.modify(goodsCategory);
+        System.out.println("+++++++++++++++++++++++++=" + count);
+        if (count > 0) {
+            return "/goods/goodsSort_list";
         }
-        model.addAttribute("message",Constants.FILEDMODIFY);
-      return "goodsSort_modify";
+        model.addAttribute("message", Constants.FILEDMODIFY);
+        return "goodsSort_modify";
     }
 
     /*     进入商品列表  */
     @RequestMapping("/toGoodsList")
-    public String toGoodsList(){
-        return "goods_list";
+    public String toGoodsList() {
+        return "goods/goods_list";
     }
+
     /*            增加商品        */
     @RequestMapping("/goodsAdd")
     public String addGoods(@ModelAttribute("goods") Goods goods) {
         return "goods_add";
     }
+
     /*            保存商品分类        */
     @RequestMapping("/goodsAddSave")
-    public String addGoodsSave(@ModelAttribute("goods")Goods goods, HttpSession session,
-                              HttpServletRequest request, @RequestParam(value ="a_idPicPath", required = false) MultipartFile attach) {
+    public String addGoodsSave(@ModelAttribute("goods") Goods goods, HttpSession session,
+                               HttpServletRequest request, @RequestParam(value = "a_idPicPath", required = false) MultipartFile attach) {
         String idPicPath = null;
         //判断文件是否为空
-        if(!attach.isEmpty()) {
+        if (!attach.isEmpty()) {
             String path = request.getSession().getServletContext().getRealPath("static" + File.separator + "uploadfiles");
             logger.info("uploadFile path ============== > " + path);
             String oldFileName = attach.getOriginalFilename();//原文件名
@@ -179,7 +184,7 @@ public class GoodsController {
                 return "goodsSort_add";
             } else if (prefix.equalsIgnoreCase("jpg") || prefix.equalsIgnoreCase("png")
                     || prefix.equalsIgnoreCase("jpeg") || prefix.equalsIgnoreCase("pneg")) {//上传图片格式不正确
-                String fileName = System.currentTimeMillis() + RandomUtils.nextInt(1,100000) + "_Personal.jpg";
+                String fileName = System.currentTimeMillis() + RandomUtils.nextInt(1, 100000) + "_Personal.jpg";
                 logger.debug("new fileName======== " + attach.getName());
                 File targetFile = new File(path, fileName);
                 if (!targetFile.exists()) {
@@ -207,44 +212,61 @@ public class GoodsController {
         }
         return "goods_add";
     }
+
     /*            获取商品列表  以及分页信息      */
-    @ResponseBody
+//    @ResponseBody
+//    List<Goods> goodsList
     @RequestMapping(value = "/goodsList")
-    public List<Goods> goodsList(Model model, HttpSession session,
-                                @RequestParam(value = "goodsName", required = false ) String goodsName,
-                                @RequestParam(value = "status", required = false) Integer status,
-                                @RequestParam(value = "categoryId", required = false) Integer categoryId,
-                                @RequestParam(value = "pageIndex",defaultValue = "1") String pageIndex
-                                 ) {
-        int pageSizes = Constants.pageSize;
-        //当前页码
-        Integer currentPageNo = 1;
-        if (pageIndex != null) {
-            try {
-                currentPageNo = Integer.valueOf(pageIndex);
-            } catch (NumberFormatException e) {
-                // TODO: handle exception
-                e.printStackTrace();
-            }
+    public String goodsList(Model model, HttpSession session,
+                            @RequestParam(value = "goodsName", required = false) String goodsName,
+                            @RequestParam(value = "status", required = false) String status,
+                            @RequestParam(value = "categoryId", required = false) String categoryId
+    ) {
+//        int pageSizes = Constants.pageSize;
+//        String pageIndex = "1";
+        Integer status2 = null;
+        if (status!=null &&!status.equals("")) {
+            status2 = Integer.parseInt(status);
+        }else {
+            status2=null;
         }
-       int totalCount = goodsService.getGoodsCount(goodsName, status, categoryId);
-        PageSupport pages = new PageSupport();
-        pages.setCurrentPageNo(currentPageNo);
-        pages.setPageSize(pageSizes);
-        pages.setTotalCount(totalCount);
-        int totalPageCount = pages.getTotalPageCount();
-        //控制首页和尾页
-        if (currentPageNo < 1) {
-            currentPageNo = 1;
-        } else if (currentPageNo > totalPageCount) {
-            currentPageNo = totalPageCount;
+        Integer categoryId2 = null;
+        if (categoryId!=null &&!categoryId.equals("")) {
+            categoryId2 = Integer.parseInt(categoryId);
+        }else {
+            categoryId2=null;
         }
+//        //当前页码
+//        Integer currentPageNo = 1;
+//        if (pageIndex != null) {
+//            try {
+//                currentPageNo = Integer.valueOf(pageIndex);
+//            } catch (NumberFormatException e) {
+//                // TODO: handle exception
+//                e.printStackTrace();
+//            }
+//        }
+//        int totalCount = goodsService.getGoodsCount(goodsName, status2, categoryId2);
+//        PageSupport pages = new PageSupport();
+//        pages.setCurrentPageNo(currentPageNo);
+//        pages.setPageSize(pageSizes);
+//        pages.setTotalCount(totalCount);
+//        int totalPageCount = pages.getTotalPageCount();
+//        //控制首页和尾页
+//        if (currentPageNo < 1) {
+//            currentPageNo = 1;
+//        } else if (currentPageNo > totalPageCount) {
+//            currentPageNo = totalPageCount;
+//        }
+        List<GoodsCategory> goodsCategoryList = goodsCategoryService.findAllGoodsCategory();
         //获取商品列表
-        List<Goods> list = goodsService.findGoodsListById2(goodsName, status, categoryId, currentPageNo, pageSizes);
-        System.out.println("+++++++++++++++++++++++++++++++++++++++"+list);
-        // session.setAttribute("list", list);
-       // session.setAttribute("statusList",statusList);
-        return list;
+        List<Goods> list = goodsService.findGoodsListById2(goodsName, status2, categoryId2);
+        System.out.println("+++++++++++++++++++++++++++++++++++++++" + list);
+        session.setAttribute("list", list);
+        session.setAttribute("goodsCategoryList", goodsCategoryList);
+        List<Status> statusList = statusService.getStatuslist("Goods_Status");
+        session.setAttribute("statusList", statusList);
+        return "goods/goods_list";
     }
     /*            修改商品列表          */
 
@@ -252,21 +274,21 @@ public class GoodsController {
     public String modifyGoods(@PathVariable("goodsId") int goodsId, HttpSession session, Model model) {
         goods = goodsService.getGoodsById(goodsId);
         model.addAttribute("goods", goods);
-        return "goodsSort_modify";
+        return "goods/goodsSort_modify";
 
     }
 
     /*            修改商品保存列表          */
 
     @RequestMapping("/modifySave")
-    public String modifyGoods(@ModelAttribute("goods")Goods goods, Model model) {
+    public String modifyGoods(@ModelAttribute("goods") Goods goods, Model model) {
         goods.setUpdateTime(new Date());
         int count = goodsService.modify(goods);
         if (count > 0) {
             model.addAttribute("message", "您修改成功");
-            return "goods_list";
+            return "goods/goods_list";
         }
-        return "goods_modify";
+        return "goods/goods_modify";
     }
     /*            删除商品      */
 
@@ -275,24 +297,25 @@ public class GoodsController {
         int count = goodsService.deleteGoodsById(goodsId);
         System.out.println("+++++++++++++++++++++=" + count);
         if (count > 0) {
-            return "goods_list";
+            return "goods/goods_list";
         } else {
             model.addAttribute("message", Constants.FILEDSHANCHU);
-            return "goods_list";
+            return "goods/goods_list";
         }
     }
+
     /*            修改商品       */
     @RequestMapping("/modifyGoods/{goodsId}")
     public String goodsModify(@PathVariable("goodsId") Integer goodsId, Model model) {
         goods = goodsService.getGoodsById(goodsId);
         model.addAttribute("goods", goods);
-        return "goods_modify";
+        return "goods/goods_modify";
     }
     /*            增加商品      */
 
     @RequestMapping("/addGoods")
     public String addGoods() {
-        return "addGoods";
+        return "goods/goods_add";
     }
     /*            增加商品保存     */
 
@@ -302,8 +325,8 @@ public class GoodsController {
         int count = goodsService.modify(goods);
         if (count > 0) {
             model.addAttribute("message", "您增加成功！！");
-            return "goods/goodsList";
+            return "goods/goods_list";
         }
-        return "goods/addGoods";
+        return "goods/goods_add";
     }
 }

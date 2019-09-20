@@ -31,13 +31,13 @@ public class GoodsMapperTest {
 
     }
 
-    @Test
-    public void findGoodsListById2() {
-        List<Goods>list=goodsMapper.findGoodsListById2("",1,1,1,2);
-        for(Goods goods:list){
-            System.out.println(goods);
-        }
-    }
+//    @Test
+//    public void findGoodsListById2() {
+//        List<Goods>list=goodsMapper.findGoodsListById2("",1,1,1,2);
+//        for(Goods goods:list){
+//            System.out.println(goods);
+//        }
+//    }
 
     @Test
     public void getGoodsById() {
@@ -82,10 +82,10 @@ public class GoodsMapperTest {
     }
 
 //    @Test
-//    public void getGoodsCount() {
-//        List<Goods> goodsListById2 = goodsService.findGoodsListById2("", "", "",1,3);
+//    public void getGoods() {
+//        List<Goods> goodsListById2 = goodsService.findGoodsListById2("百", null, null,0,3);
 //       for(Goods gs:goodsListById2){
-//           System.out.println(gs);
+//           System.out.println("+++++++++++++++++++++"+gs);
 //       }
 //    }
     @Test
@@ -94,5 +94,10 @@ public class GoodsMapperTest {
         for(Goods gs:goodsListById2){
             System.out.println(gs);
         }
+    }
+    @Test
+    public void count(){
+     Integer count= goodsService.getGoodsCount("",null,null);
+        System.out.println("+++++++++++++++++++++++++++"+count);
     }
 }

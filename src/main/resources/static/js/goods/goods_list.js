@@ -1,7 +1,7 @@
 $(function () {
-    loadFile(null,0,0,1);
-   status();
-   sortList();
+    //loadFile(null,null,null,1);
+   // status();
+   // sortList();
 
     $("#button").click(function () {
         var goodName = $("#goodsName").val();
@@ -19,7 +19,7 @@ function sortList() {
         url: "/goods/sortList",
         success: function (data) {
             // console.info(data)
-            var sortOp = "<option value='0' >全部</option>"
+            var sortOp = "<option value='' >全部</option>"
             if (null != data) {
                 $.each(data, function (i, sort) {
                     sortOp += "<option value=" + sort.categoryId + ">" +
@@ -36,7 +36,7 @@ function status() {
     $.getJSON({
         url: "/goods/statusList",
         success: function (data) {
-            //  console.info(data)
+           console.info(data)
             var sortOp = "<option value='0' >全部</option>"
             if (null != data) {
                 $.each(data, function (i, sort) {
