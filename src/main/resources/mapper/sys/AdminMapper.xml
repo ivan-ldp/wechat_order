@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--映射文件的命名空间，为mapper.xml所有的目录完全限定名加文件名-->
+<mapper namespace="com.kgc.wechatorder.sys.dao.AdminMappper">
+
+    <update id="updateAdmin">
+      update admin
+        <trim prefix="set" suffixOverrides="," suffix="where adminId=#{adminId}">
+            <if test="adminName!=null || adminName!=''">adminName=#{adminName},</if>
+            <if test="phone!=null || phone!=''">phone=#{phone},</if>
+            <if test="password!=null || password!=''">password=#{password},</if>
+            <if test="createTime!=null || createTime!=''">createTime=#{createTime},</if>
+        </trim>
+    </update>
+    <select id="checkAdminName" resultType="java.lang.Integer">
+    select count(1) from admin where adminName=#{adminName}
+    </select>
+    <select id="checkAdminPassword" resultType="java.lang.Integer">
+        select count(1) from admin where password=#{password}
+    </select>
+    <select id="login" resultType="Admin">
+        select * from admin where adminName=#{adminName} and password=#{password}
+    </select>
+</mapper>
