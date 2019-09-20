@@ -1,10 +1,13 @@
 package com.kgc.wechatorder.sys.pojo;
 
+import org.apache.ibatis.type.Alias;
+
 import java.util.Date;
 
 /**
  * 管理员表
  */
+@Alias("Admin")
 public class Admin {
     private int adminId;//主键
     private String adminName;//管理员名称
