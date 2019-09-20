@@ -9,10 +9,10 @@ public interface GoodsService {
     /**
      * 按商品分类id查询
      *
-     * @param sortId
+     * @param categoryId
      * @return
      */
-    public List<Goods> findGoodsListById1(int sortId);
+    public List<Goods> findGoodsListById1(Integer categoryId);
 
     /**
      * 按商品条件进行分页查询
@@ -28,6 +28,7 @@ public interface GoodsService {
     public List<Goods> findGoodsListById2(@Param("goodsName") String goodsName,
                                           @Param("status") Integer status,
                                           @Param("categoryId") Integer categoryId);
+
 
     /**
      * 按商品id查询

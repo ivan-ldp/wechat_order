@@ -8,6 +8,7 @@ import java.util.Date;
 public class Goods {
     private  int goodsId;//主键
     private int categoryId;//关联种类主键
+    private String categoryName;//种类ID对应的种类名称
     private String goodsName;//商品名称
     private String picUrl;//图片路径
     private String description;//详细描述
@@ -18,6 +19,12 @@ public class Goods {
     private Date createTime;//创建时间
     private Date updateTime;//更新时间
 
+    public String getCategoryName() {
+        return categoryName;
+    }
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
     public int getGoodsId() {
         return goodsId;
     }
@@ -111,6 +118,7 @@ public class Goods {
         return "Goods{" +
                 "goodsId=" + goodsId +
                 ", categoryId=" + categoryId +
+                ", categoryName='" + categoryName + '\'' +
                 ", goodsName='" + goodsName + '\'' +
                 ", picUrl='" + picUrl + '\'' +
                 ", description='" + description + '\'' +

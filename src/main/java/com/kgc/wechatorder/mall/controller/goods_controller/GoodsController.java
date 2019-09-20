@@ -11,6 +11,7 @@ import com.kgc.wechatorder.tools.Constants;
 import com.kgc.wechatorder.tools.PageSupport;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.RandomUtils;
+import org.apache.ibatis.annotations.Param;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -212,8 +213,18 @@ public class GoodsController {
         }
         return "goods_add";
     }
-
-    /*            获取商品列表  以及分页信息      */
+    /*            凭借商品种类获取商品列表  使用ajax传值   */
+    @ResponseBody
+    @RequestMapping(value = "/goodsList2",method = RequestMethod.POST)
+    public List<Goods> goodsList2(Model model,
+                                  @Param("categoryId") Integer categoryId
+    ) {
+        System.out.println("+++++++++"+categoryId);
+        //获取商品列表
+        List<Goods> list2 = goodsService.findGoodsListById1(categoryId);
+        return list2;
+    }
+    /*            获取商品列表  使用页面传值   */
 //    @ResponseBody
 //    List<Goods> goodsList
     @RequestMapping(value = "/goodsList")

@@ -14,10 +14,16 @@ public interface GoodsMapper {
     /**
      * 按商品分类id查询
      *
-     * @param sortId
+     * @param categoryId
      * @return
      */
-    public List<Goods> findGoodsListById1(int sortId);
+    public List<Goods> findGoodsListById1(@Param("categoryId")Integer categoryId);
+
+    /**
+     * 获取所有的商品通过ajax来进行传输
+     * @return
+     */
+    public List<Goods> findGoodsList();
 
     /**
      * 按商品条件进行分页查询
@@ -33,6 +39,7 @@ public interface GoodsMapper {
     public List<Goods> findGoodsListById2(@Param("goodsName") String goodsName,
                                           @Param("status") Integer status,
                                           @Param("categoryId") Integer categoryId);
+
 
     /**
      * 按商品id查询

@@ -13,7 +13,7 @@ public class GoodsServiceImpl implements GoodsService {
     @Resource
     private GoodsMapper goodsMapper;
     @Override
-    public List<Goods> findGoodsListById1(int sortId) {
+    public List<Goods> findGoodsListById1(Integer sortId) {
         return goodsMapper.findGoodsListById1(sortId);
     }
 
