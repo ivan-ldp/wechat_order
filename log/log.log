@@ -34,3 +34,88 @@
 2019-09-16 17:56:48 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:184) GoodsController.java DEBUG new fileName======== a_idPicPath
 2019-09-19 08:48:53 com.kgc.wechatorder.wechat.dao.UserTokenMapperTest.save(UserTokenMapperTest.java:52) UserTokenMapperTest.java INFO 1
 2019-09-19 09:48:50 com.kgc.wechatorder.wechat.dao.UserTokenMapperTest.save(UserTokenMapperTest.java:52) UserTokenMapperTest.java INFO 1
+2019-09-20 17:26:46 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:177) GoodsController.java INFO uploadFile path ============== > C:\Users\Administrator\AppData\Local\Temp\tomcat-docbase.5475569426165946896.8080\static\uploadfiles
+2019-09-20 17:26:46 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:179) GoodsController.java INFO uploadFile oldFileName ============== > 捕获.jpg
+2019-09-20 17:26:46 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:181) GoodsController.java DEBUG uploadFile prefix============> jpg
+2019-09-20 17:26:46 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:183) GoodsController.java DEBUG uploadFile size============> 1132
+2019-09-20 17:26:46 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:190) GoodsController.java DEBUG new fileName======== a_idPicPath
+2019-09-20 17:28:54 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:177) GoodsController.java INFO uploadFile path ============== > C:\Users\Administrator\AppData\Local\Temp\tomcat-docbase.3527768102948551867.8080\static\uploadfiles
+2019-09-20 17:28:54 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:179) GoodsController.java INFO uploadFile oldFileName ============== > 捕获.jpg
+2019-09-20 17:28:54 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:181) GoodsController.java DEBUG uploadFile prefix============> jpg
+2019-09-20 17:28:54 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:183) GoodsController.java DEBUG uploadFile size============> 1132
+2019-09-20 17:28:54 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:190) GoodsController.java DEBUG new fileName======== a_idPicPath
+2019-09-20 17:33:30 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:177) GoodsController.java INFO uploadFile path ============== > C:\Users\Administrator\AppData\Local\Temp\tomcat-docbase.8553969766609421397.8080\static\uploadfiles
+2019-09-20 17:33:30 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:179) GoodsController.java INFO uploadFile oldFileName ============== > 捕获.jpg
+2019-09-20 17:33:30 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:181) GoodsController.java DEBUG uploadFile prefix============> jpg
+2019-09-20 17:33:30 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:183) GoodsController.java DEBUG uploadFile size============> 1132
+2019-09-20 17:33:30 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:190) GoodsController.java DEBUG new fileName======== a_idPicPath
+2019-09-20 17:37:53 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:177) GoodsController.java INFO uploadFile path ============== > C:\Users\Administrator\AppData\Local\Temp\tomcat-docbase.9203934402497376417.8080\static\uploadfiles
+2019-09-20 17:37:53 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:179) GoodsController.java INFO uploadFile oldFileName ============== > 捕获.jpg
+2019-09-20 17:37:53 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:181) GoodsController.java DEBUG uploadFile prefix============> jpg
+2019-09-20 17:37:53 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:183) GoodsController.java DEBUG uploadFile size============> 1132
+2019-09-20 17:37:53 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:190) GoodsController.java DEBUG new fileName======== a_idPicPath
+2019-09-21 09:35:10 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:177) GoodsController.java INFO uploadFile path ============== > C:\Users\Administrator\AppData\Local\Temp\tomcat-docbase.8152561339477989384.8080\static\uploadfiles
+2019-09-21 09:35:10 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:179) GoodsController.java INFO uploadFile oldFileName ============== > 捕获.jpg
+2019-09-21 09:35:10 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:181) GoodsController.java DEBUG uploadFile prefix============> jpg
+2019-09-21 09:35:10 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:183) GoodsController.java DEBUG uploadFile size============> 1132
+2019-09-21 09:35:10 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:190) GoodsController.java DEBUG new fileName======== a_idPicPath
+2019-09-21 09:38:47 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:178) GoodsController.java INFO uploadFile path ============== > C:\Users\Administrator\AppData\Local\Temp\tomcat-docbase.4163013483243450416.8080\statics\image\
+2019-09-21 09:38:47 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:180) GoodsController.java INFO uploadFile oldFileName ============== > 捕获.jpg
+2019-09-21 09:38:47 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:182) GoodsController.java DEBUG uploadFile prefix============> jpg
+2019-09-21 09:38:48 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:184) GoodsController.java DEBUG uploadFile size============> 1132
+2019-09-21 09:38:48 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:191) GoodsController.java DEBUG new fileName======== a_idPicPath
+2019-09-21 09:52:33 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:178) GoodsController.java INFO uploadFile path ============== > C:\Users\Administrator\AppData\Local\Temp\tomcat-docbase.5865229854008711268.8080\statics\image\
+2019-09-21 09:52:33 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:180) GoodsController.java INFO uploadFile oldFileName ============== > 捕获.jpg
+2019-09-21 09:52:33 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:182) GoodsController.java DEBUG uploadFile prefix============> jpg
+2019-09-21 09:52:33 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:184) GoodsController.java DEBUG uploadFile size============> 1132
+2019-09-21 09:52:33 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:191) GoodsController.java DEBUG new fileName======== a_idPicPath
+2019-09-21 10:10:55 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:178) GoodsController.java INFO uploadFile path ============== > C:\Users\Administrator\AppData\Local\Temp\tomcat-docbase.5865229854008711268.8080\statics\image\
+2019-09-21 10:10:55 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:180) GoodsController.java INFO uploadFile oldFileName ============== > 捕获.jpg
+2019-09-21 10:10:55 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:182) GoodsController.java DEBUG uploadFile prefix============> jpg
+2019-09-21 10:10:55 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:184) GoodsController.java DEBUG uploadFile size============> 1132
+2019-09-21 10:10:55 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:191) GoodsController.java DEBUG new fileName======== a_idPicPath
+2019-09-21 10:12:01 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:178) GoodsController.java INFO uploadFile path ============== > C:\Users\Administrator\AppData\Local\Temp\tomcat-docbase.6235462056997777597.8080\statics\image\
+2019-09-21 10:12:01 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:180) GoodsController.java INFO uploadFile oldFileName ============== > 捕获.jpg
+2019-09-21 10:12:01 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:182) GoodsController.java DEBUG uploadFile prefix============> jpg
+2019-09-21 10:12:01 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:184) GoodsController.java DEBUG uploadFile size============> 1132
+2019-09-21 10:12:01 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:191) GoodsController.java DEBUG new fileName======== a_idPicPath
+2019-09-21 11:49:45 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:231) GoodsController.java INFO uploadFile oldFileName ============== > 捕获.jpg
+2019-09-21 11:49:45 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:233) GoodsController.java DEBUG uploadFile prefix============> jpg
+2019-09-21 11:49:45 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:235) GoodsController.java DEBUG uploadFile size============> 1132
+2019-09-21 11:49:45 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:242) GoodsController.java DEBUG new fileName======== a_idPicPath
+2019-09-21 14:30:41 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:236) GoodsController.java INFO uploadFile oldFileName ============== > 捕获.jpg
+2019-09-21 14:30:41 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:238) GoodsController.java DEBUG uploadFile prefix============> jpg
+2019-09-21 14:30:41 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:240) GoodsController.java DEBUG uploadFile size============> 1132
+2019-09-21 14:30:41 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:247) GoodsController.java DEBUG new fileName======== a_idPicPath
+2019-09-21 14:35:19 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:236) GoodsController.java INFO uploadFile oldFileName ============== > 捕获.jpg
+2019-09-21 14:35:19 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:238) GoodsController.java DEBUG uploadFile prefix============> jpg
+2019-09-21 14:35:19 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:240) GoodsController.java DEBUG uploadFile size============> 1132
+2019-09-21 14:35:19 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:247) GoodsController.java DEBUG new fileName======== a_idPicPath
+2019-09-21 14:45:40 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:236) GoodsController.java INFO uploadFile oldFileName ============== > 捕获.jpg
+2019-09-21 14:45:40 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:238) GoodsController.java DEBUG uploadFile prefix============> jpg
+2019-09-21 14:45:40 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:240) GoodsController.java DEBUG uploadFile size============> 1132
+2019-09-21 14:45:40 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:247) GoodsController.java DEBUG new fileName======== a_idPicPath
+2019-09-21 14:47:00 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:236) GoodsController.java INFO uploadFile oldFileName ============== > 捕获.jpg
+2019-09-21 14:47:00 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:238) GoodsController.java DEBUG uploadFile prefix============> jpg
+2019-09-21 14:47:00 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:240) GoodsController.java DEBUG uploadFile size============> 1132
+2019-09-21 14:47:00 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:247) GoodsController.java DEBUG new fileName======== a_idPicPath
+2019-09-23 09:07:14 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:236) GoodsController.java INFO uploadFile oldFileName ============== > 捕获.jpg
+2019-09-23 09:07:14 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:238) GoodsController.java DEBUG uploadFile prefix============> jpg
+2019-09-23 09:07:14 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:240) GoodsController.java DEBUG uploadFile size============> 1132
+2019-09-23 09:07:14 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:247) GoodsController.java DEBUG new fileName======== a_idPicPath
+2019-09-23 09:11:58 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:236) GoodsController.java INFO uploadFile oldFileName ============== > 捕获.jpg
+2019-09-23 09:11:58 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:238) GoodsController.java DEBUG uploadFile prefix============> jpg
+2019-09-23 09:11:58 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:240) GoodsController.java DEBUG uploadFile size============> 1132
+2019-09-23 09:11:58 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:247) GoodsController.java DEBUG new fileName======== a_idPicPath
+2019-09-23 09:15:45 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:236) GoodsController.java INFO uploadFile oldFileName ============== > 捕获.jpg
+2019-09-23 09:15:45 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:238) GoodsController.java DEBUG uploadFile prefix============> jpg
+2019-09-23 09:15:45 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:240) GoodsController.java DEBUG uploadFile size============> 1132
+2019-09-23 09:15:45 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:247) GoodsController.java DEBUG new fileName======== a_idPicPath
+2019-09-23 09:26:00 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:236) GoodsController.java INFO uploadFile oldFileName ============== > 捕获.jpg
+2019-09-23 09:26:00 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:238) GoodsController.java DEBUG uploadFile prefix============> jpg
+2019-09-23 09:26:00 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:240) GoodsController.java DEBUG uploadFile size============> 1132
+2019-09-23 09:26:00 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:247) GoodsController.java DEBUG new fileName======== a_idPicPath
+2019-09-23 09:28:34 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:236) GoodsController.java INFO uploadFile oldFileName ============== > 捕获.jpg
+2019-09-23 09:28:34 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:238) GoodsController.java DEBUG uploadFile prefix============> jpg
+2019-09-23 09:28:34 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:240) GoodsController.java DEBUG uploadFile size============> 1132
+2019-09-23 09:28:34 com.kgc.wechatorder.mall.controller.goods_controller.GoodsController.addGoodsSave(GoodsController.java:247) GoodsController.java DEBUG new fileName======== a_idPicPath
