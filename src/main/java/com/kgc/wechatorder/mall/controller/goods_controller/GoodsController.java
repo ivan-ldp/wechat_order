@@ -13,8 +13,10 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.RandomUtils;
 import org.apache.ibatis.annotations.Param;
 import org.apache.log4j.Logger;
+import org.springframework.boot.system.ApplicationHome;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,6 +24,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -56,10 +59,10 @@ public class GoodsController {
         return statusList;
     }
 
-    /*            进入goods_list页面     */
+    /*            进入goods分类列表页面     */
     @RequestMapping("/toGoodsSortList")
     public String toGoodsSortList() {
-        return "/goods/goods_list";
+        return "classify";
     }
 
 
@@ -70,66 +73,66 @@ public class GoodsController {
         int count = goodsCategoryService.delete(sortId);
         System.out.println("+++++++++++++++++++++=" + count);
         if (count > 0) {
-            return "/goodsSort_list";
+            return "classify";
         } else {
             model.addAttribute("message", Constants.FILEDSHANCHU);
-            return "/goods/goodsSort_list";
+            return "classify";
         }
     }
 
     /*            增加商品分类        */
     @RequestMapping("/sortadd")
     public String addSortList(@ModelAttribute("goodsCategory") GoodsCategory goodsCategory) {
-        return "/goods/goodsSort_add";
+        return "insertClassify";
     }
 
     /*            保存商品分类        */
     @RequestMapping("/sortaddSave")
     public String addSortSave(@ModelAttribute("goodsCategory") GoodsCategory goodsCategory, HttpSession session,
                               HttpServletRequest request, @RequestParam(value = "a_idPicPath", required = false) MultipartFile attach) {
-        String idPicPath = null;
-        //判断文件是否为空
-        if (!attach.isEmpty()) {
-            String path = request.getSession().getServletContext().getRealPath("static" + File.separator + "uploadfiles");
-            logger.info("uploadFile path ============== > " + path);
-            String oldFileName = attach.getOriginalFilename();//原文件名
-            logger.info("uploadFile oldFileName ============== > " + oldFileName);
-            String prefix = FilenameUtils.getExtension(oldFileName);//原文件后缀
-            logger.debug("uploadFile prefix============> " + prefix);
-            int filesize = 500000;
-            logger.debug("uploadFile size============> " + attach.getSize());
-            if (attach.getSize() > filesize) {//上传大小不得超过 500k
-                request.setAttribute("uploadFileError", " * 上传大小不得超过 500k");
-                return "goodsSort_add";
-            } else if (prefix.equalsIgnoreCase("jpg") || prefix.equalsIgnoreCase("png")
-                    || prefix.equalsIgnoreCase("jpeg") || prefix.equalsIgnoreCase("pneg")) {//上传图片格式不正确
-                String fileName = System.currentTimeMillis() + RandomUtils.nextInt(1, 100000) + "_Personal.jpg";
-                logger.debug("new fileName======== " + attach.getName());
-                File targetFile = new File(path, fileName);
-                if (!targetFile.exists()) {
-                    targetFile.mkdirs();
-                }
-                //保存
-                try {
-                    attach.transferTo(targetFile);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    request.setAttribute("uploadFileError", " * 上传失败！");
-                    return "/goods/goodsSort_add";
-                }
-                idPicPath = path + File.separator + fileName;
-            } else {
-                request.setAttribute("uploadFileError", " * 上传图片格式不正确");
-                return "/goods/goodsSort_add";
-            }
-        }
+//        String idPicPath = null;
+//        //判断文件是否为空
+//        if (!attach.isEmpty()) {
+//            String path = request.getSession().getServletContext().getRealPath("static" + File.separator + "uploadfiles");
+//            logger.info("uploadFile path ============== > " + path);
+//            String oldFileName = attach.getOriginalFilename();//原文件名
+//            logger.info("uploadFile oldFileName ============== > " + oldFileName);
+//            String prefix = FilenameUtils.getExtension(oldFileName);//原文件后缀
+//            logger.debug("uploadFile prefix============> " + prefix);
+//            int filesize = 500000;
+//            logger.debug("uploadFile size============> " + attach.getSize());
+//            if (attach.getSize() > filesize) {//上传大小不得超过 500k
+//                request.setAttribute("uploadFileError", " * 上传大小不得超过 500k");
+//                return "goodsSort_add";
+//            } else if (prefix.equalsIgnoreCase("jpg") || prefix.equalsIgnoreCase("png")
+//                    || prefix.equalsIgnoreCase("jpeg") || prefix.equalsIgnoreCase("pneg")) {//上传图片格式不正确
+//                String fileName = System.currentTimeMillis() + RandomUtils.nextInt(1, 100000) + "_Personal.jpg";
+//                logger.debug("new fileName======== " + attach.getName());
+//                File targetFile = new File(path, fileName);
+//                if (!targetFile.exists()) {
+//                    targetFile.mkdirs();
+//                }
+//                //保存
+//                try {
+//                    attach.transferTo(targetFile);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                    request.setAttribute("uploadFileError", " * 上传失败！");
+//                    return "/goods/goodsSort_add";
+//                }
+//                idPicPath = path + File.separator + fileName;
+//            } else {
+//                request.setAttribute("uploadFileError", " * 上传图片格式不正确");
+//                return "/goods/goodsSort_add";
+//            }
+//        }
 
         goodsCategory.setCreateTime(new Date());
-        goodsCategory.setPicUrl(idPicPath);
+        //  goodsCategory.setPicUrl(idPicPath);
         if (goodsCategoryService.add(goodsCategory) > 0) {
-            return "/goods/goodsSort_list";
+            return "classify";
         }
-        return "/goods/goodsSort_add";
+        return "insertClassify";
     }
 
     /*            修改商品分类        */
@@ -162,18 +165,30 @@ public class GoodsController {
     /*            增加商品        */
     @RequestMapping("/goodsAdd")
     public String addGoods(@ModelAttribute("goods") Goods goods) {
-        return "goods_add";
+        return "insertCommodity";
     }
 
-    /*            保存商品分类        */
+    /*            增加商品保存       */
     @RequestMapping("/goodsAddSave")
     public String addGoodsSave(@ModelAttribute("goods") Goods goods, HttpSession session,
-                               HttpServletRequest request, @RequestParam(value = "a_idPicPath", required = false) MultipartFile attach) {
-        String idPicPath = null;
+                               HttpServletRequest request, @RequestParam(value = "a_idPicPath", required = false) MultipartFile attach) throws IOException {
+        String proPath= System.getProperty("user.dir");
+        System.out.println("根目录是++++++++++++"+proPath);
+
+        //获取根classess目录
+       File path = new File(ResourceUtils.getURL("classpath:").getPath());
+//        ApplicationHome home = new ApplicationHome(getClass());
+//        File sysfile = home.getSource();
+//        String jarPath = sysfile.getParentFile().toString();
+        String absolutePath = path.getAbsolutePath();
+        File upload = new File(path.getAbsolutePath(),"static/upload/imgs");
+        System.out.println(upload.getPath());
+        String fileName = null;
+        //String idPicPath = null;
         //判断文件是否为空
         if (!attach.isEmpty()) {
-            String path = request.getSession().getServletContext().getRealPath("static" + File.separator + "uploadfiles");
-            logger.info("uploadFile path ============== > " + path);
+//            String path = request.getSession().getServletContext().getRealPath("static" + File.separator + "uploadfiles");
+//            logger.info("uploadFile path ============== > " + path);
             String oldFileName = attach.getOriginalFilename();//原文件名
             logger.info("uploadFile oldFileName ============== > " + oldFileName);
             String prefix = FilenameUtils.getExtension(oldFileName);//原文件后缀
@@ -185,45 +200,40 @@ public class GoodsController {
                 return "goodsSort_add";
             } else if (prefix.equalsIgnoreCase("jpg") || prefix.equalsIgnoreCase("png")
                     || prefix.equalsIgnoreCase("jpeg") || prefix.equalsIgnoreCase("pneg")) {//上传图片格式不正确
-                String fileName = System.currentTimeMillis() + RandomUtils.nextInt(1, 100000) + "_Personal.jpg";
+                fileName = System.currentTimeMillis() + RandomUtils.nextInt(1, 100000) + "_Personal.jpg";
                 logger.debug("new fileName======== " + attach.getName());
-                File targetFile = new File(path, fileName);
-                if (!targetFile.exists()) {
-                    targetFile.mkdirs();
+                File filePath = new File(proPath,"src/main/resources/static/upload/imgs/");
+                logger.info("uploadFile path ============== > " + filePath);
+                if (!filePath.exists()) {
+                    filePath.mkdirs();
                 }
-                //保存
-                try {
-                    attach.transferTo(targetFile);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    request.setAttribute("uploadFileError", " * 上传失败！");
-                    return "goods_add";
-                }
-                idPicPath = path + File.separator + fileName;
+                attach.transferTo(new File(upload,fileName));
+
             } else {
                 request.setAttribute("uploadFileError", " * 上传图片格式不正确");
-                return "goods_add";
+                return "insertCommodity";
             }
         }
 
         goods.setCreateTime(new Date());
-        goods.setPicUrl(idPicPath);
+        goods.setPicUrl(fileName);
         if (goodsService.add(goods) > 0) {
-            return "goods_list";
+            return "redirect:/goods/goodsList";
         }
-        return "goods_add";
+        return "insertCommodity";
     }
+
     /*            凭借商品种类获取商品列表  使用ajax传值   */
     @ResponseBody
-    @RequestMapping(value = "/goodsList2",method = RequestMethod.POST)
+    @RequestMapping(value = "/goodsList2", method = RequestMethod.POST)
     public List<Goods> goodsList2(Model model,
                                   @Param("categoryId") Integer categoryId
     ) {
-        System.out.println("+++++++++"+categoryId);
         //获取商品列表
         List<Goods> list2 = goodsService.findGoodsListById1(categoryId);
         return list2;
     }
+
     /*            获取商品列表  使用页面传值   */
 //    @ResponseBody
 //    List<Goods> goodsList
@@ -236,16 +246,16 @@ public class GoodsController {
 //        int pageSizes = Constants.pageSize;
 //        String pageIndex = "1";
         Integer status2 = null;
-        if (status!=null &&!status.equals("")) {
+        if (status != null && !status.equals("")) {
             status2 = Integer.parseInt(status);
-        }else {
-            status2=null;
+        } else {
+            status2 = null;
         }
         Integer categoryId2 = null;
-        if (categoryId!=null &&!categoryId.equals("")) {
+        if (categoryId != null && !categoryId.equals("")) {
             categoryId2 = Integer.parseInt(categoryId);
-        }else {
-            categoryId2=null;
+        } else {
+            categoryId2 = null;
         }
 //        //当前页码
 //        Integer currentPageNo = 1;
@@ -277,7 +287,7 @@ public class GoodsController {
         session.setAttribute("goodsCategoryList", goodsCategoryList);
         List<Status> statusList = statusService.getStatuslist("Goods_Status");
         session.setAttribute("statusList", statusList);
-        return "goods/goods_list";
+        return "design";
     }
     /*            修改商品列表          */
 
@@ -308,10 +318,10 @@ public class GoodsController {
         int count = goodsService.deleteGoodsById(goodsId);
         System.out.println("+++++++++++++++++++++=" + count);
         if (count > 0) {
-            return "goods/goods_list";
+            return "redirect:/goods/goodsList";
         } else {
             model.addAttribute("message", Constants.FILEDSHANCHU);
-            return "goods/goods_list";
+            return "design";
         }
     }
 

@@ -11,6 +11,7 @@ function loadSort() {
             if(null!=data){
                 $.each(data, function (i, n) {
                     var s="<tr>\n" +
+                        "<td><input type=\"checkbox\"></td>\n" +
                         "<td>"+n.categoryId+"</td>\n" +
                         "<td>"+n.categoryName+"</td>\n" +
                         "<td>"+n.createTime+"</td>\n" +

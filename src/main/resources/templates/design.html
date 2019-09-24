@@ -1,12 +1,13 @@
 <!doctype html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 	<head>
 		<meta charset="UTF-8">
 		<title>后台管理</title>
-		<link rel="stylesheet" type="text/css" href="css/common.css" />
-		<link rel="stylesheet" type="text/css" href="css/main.css" />
-		<script type="text/javascript" src="js/libs/modernizr.min.js"></script>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/common.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+		<script th:src="@{/js/jquery-3.0.0.js}"></script>
+		<script th:src="@{/js/goods2/goods_list.js}"></script>
 	</head>
 
 	<body>
@@ -70,19 +71,18 @@
 				</div>
 				<div class="search-wrap">
 					<div class="search-content">
-						<form action="/jscss/admin/design/index" method="post">
+						<form th:action="@{/goods/goodsList}" method="post">
 							<table class="search-tab">
 								<tr>
-									<th width="120">选择分类:</th>
+									<th width="120">选择状态:</th>
 									<td>
-										<select name="search-sort" id="">
+										<select name="search-sort" id="search-sort" th:name="status">
 											<option value="">全部</option>
-											<option value="19">热菜</option>
-											<option value="20">凉菜</option>
+											<option th:each="status:${session.statusList}" th:value="${status.valueId}" th:text="${status.valueName}"></option>
 										</select>
 									</td>
 									<th width="70">关键字:</th>
-									<td><input class="common-text" placeholder="关键字" name="keywords" value="" id="" type="text"></td>
+									<td><input class="common-text" placeholder="关键字" th:name="goodsName" value="" id="" type="text"></td>
 									<td><input class="btn btn-primary btn2" name="sub" value="查询" type="submit"></td>
 								</tr>
 							</table>
@@ -93,7 +93,7 @@
 					<form name="myform" id="myform" method="post">
 						<div class="result-title">
 							<div class="result-list">
-								<a href="insertCommodity.html"><i class="icon-font"></i>新增菜品</a>
+								<a th:href="@{/goods/goodsAdd}"><i class="icon-font"></i>新增菜品</a>
 								<a id="batchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</a>
 								<a id="updateOrd" href="javascript:void(0)"><i class="icon-font"></i>更新排序</a>
 							</div>
@@ -107,45 +107,25 @@
 									<th>展示图</th>
 									<th>销量</th>
 									<th>库存</th>
-									<th>更新时间</th>
-									<th>是否推荐</th>
 									<th>单价</th>
+									<th>修改时间</th>
+									<th>创建时间</th>
 									<th>操作</th>
 								</tr>
-								<tr>
-									<td class="tc"><input name="id[]" value="59" type="checkbox"></td>
-									
-									<td>59</td>
-									<td title="羊肉串">
-										<a target="_blank" href="#" title="羊肉串">羊肉串</a>
-									</td>
-									<td><img src="images/ms2.jpeg" style="height: 86px; width: 120px;" /></td>
-									<td>2</td>
-									<td>99</td>
-									<td>2014-03-15 21:11:01</td>
-									<td>否</td>
-									<td>52</td>
-									<td>
-										<a class="link-update" href="amendCommodity.html">修改</a>
-										<a class="link-del" href="#">删除</a>
-									</td>
-								</tr>
-								<tr>
-									<td class="tc"><input name="id[]" value="58" type="checkbox"></td>
-									
-									<td>58</td>
-									<td title="羊肉串">
-										<a target="_blank" href="#" title="羊肉串">羊肉串</a>
-									</td>
-									<td><img src="images/ms1.jpeg" style="height: 86px; width: 120px;" /></td>
-									<td>35</td>
-									<td>99</td>
-									<td>2013-12-30 22:34:00</td>
-									<td>是</td>
-									<td>255</td>
-									<td>
-										<a class="link-update" href="#">修改</a>
-										<a class="link-del" href="#">删除</a>
+								<tr th:each="list:${session.list}">
+									<td><input type="checkbox"></td>
+									<td th:text="${list.goodsId}"></td>
+									<td th:text="${list.goodsName}"></td>
+
+									<td> <img th:src="@{/upload/imgs/{picUrl}(picUrl=${list.picUrl})}"></td>
+									<!--<td> <img th:src="@{/upload/imgs/1569228513587_Personal.jpg}"></td>-->
+									<td th:text="${list.xiaoLiang}"></td>
+									<td th:text="${list.remains}"></td>
+									<td th:text="${list.price}"></td>
+									<td th:text="${list.updateTime}"></td>
+									<td th:text="${list.createTime}"></td>
+									<td><a th:href="@{/goods/modifyGoods/{goodsId}(goodsId=${list.goodsId})}">修改</a>
+										<a th:href="@{/goods/delGoods/{goodsId}(goodsId=${list.goodsId})}">删除</a>
 									</td>
 								</tr>
 							</table>

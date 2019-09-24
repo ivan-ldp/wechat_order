@@ -1,12 +1,12 @@
 <!doctype html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 	<head>
 		<meta charset="UTF-8">
 		<title>后台管理</title>
-		<link rel="stylesheet" type="text/css" href="css/common.css" />
-		<link rel="stylesheet" type="text/css" href="css/main.css" />
-		<script type="text/javascript" src="js/libs/modernizr.min.js"></script>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/common.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+		<script th:src="@{/js/jquery-3.0.0.js}"></script>
 	</head>
 
 	<body>
@@ -70,7 +70,7 @@
 				</div>
 				<div class="result-wrap">
 					<div class="result-content">
-						<form action="/jscss/admin/design/add" method="post" id="myform" name="myform"  th:action="@{/goods/goodsAddSave}"  th:object="${goods}"
+						<form th:action="@{/goods/sortaddSave}" method="post" id="myform" name="myform"  th:object="${goodsCategory}"
 							  enctype="multipart/form-data">
 							<table class="insert-tab" width="100%">
 								<tbody>
@@ -78,7 +78,7 @@
 									<tr>
 										<th><i class="require-red">*</i>分类名称：</th>
 										<td>
-											<input class="common-text required" id="title" name="title" size="50" value="" type="text" required="required">
+											<input class="common-text required" id="title" name="title" size="50" th:field="*{categoryName}" type="text" required="required">
 										</td>
 									</tr>
 									

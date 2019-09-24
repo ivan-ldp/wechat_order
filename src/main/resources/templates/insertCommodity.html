@@ -1,12 +1,12 @@
 <!doctype html>
-<html>
-
+<html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8">
 		<title>后台管理</title>
-		<link rel="stylesheet" type="text/css" href="css/common.css" />
-		<link rel="stylesheet" type="text/css" href="css/main.css" />
-		<script type="text/javascript" src="js/libs/modernizr.min.js"></script>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/common.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+		<script th:src="@{/js/jquery-3.0.0.js}"></script>
+		<script th:src="@{/js/goods/goods_add.js}"></script>
 	</head>
 
 	<body>
@@ -70,42 +70,42 @@
 				</div>
 				<div class="result-wrap">
 					<div class="result-content">
-						<form action="/jscss/admin/design/add" method="post" id="myform" name="myform" enctype="multipart/form-data">
+						<form th:action="@{/goods/goodsAddSave}" method="post" id="myform" name="myform"  th:object="${goods}" enctype="multipart/form-data">
 							<table class="insert-tab" width="100%">
 								<tbody>
 									<tr>
 										<th width="120"><i class="require-red">*</i>分类：</th>
 										<td>
-											<select name="colId" id="catid" class="required" required="required">
-												<option value="">请选择</option>
-												<option value="19">热菜</option>
-												<option value="20">凉菜</option>
+											<select name="colId" id="goods_sort" class="required" required="required">
+
 											</select>
 										</td>
 									</tr>
 									<tr>
 										<th><i class="require-red">*</i>名称：</th>
 										<td>
-											<input class="common-text required" id="title" name="title" size="50" value="" type="text" required="required">
+											<input class="common-text required" id="title" name="title" size="50" th:field="*{goodsName}" type="text" required="required">
 										</td>
 									</tr>
 									<tr>
 										<th><i class="require-red">*</i>单价：</th>
-										<td><input class="common-text" name="author" size="50" value="" type="text" pattern="^[0-9]*$" required="required"></td>
+										<td><input class="common-text" name="author" size="50" th:field="*{price}" type="text" pattern="^[0-9]*$" required="required"></td>
 									</tr>
 
 									<tr>
-										<th><i class="require-red">*</i>缩略图：</th>
-										<td><input name="smallimg" id="" type="file" required="required">
+										<th><i class="require-red">*</i>图片：</th>
+										<td><input type="file" name="a_idPicPath" id="a_idPicPath" ></td>
 											<!--<input type="submit" onclick="submitForm('/jscss/admin/design/upload')" value="上传图片"/>--></td>
 									</tr>
 									<tr>
-										<th>推荐：</th>
-										<td class="tc"><input name="id[]" value="" type="checkbox"></td>
+										<th>状态：</th>
+										<td><select name="colId" id="goods_status" class="required" required="required">
+
+										</select></td>
 									</tr>
 									<tr>
 										<th>简介：</th>
-										<td><textarea name="content" class="common-textarea" id="content" cols="30" style="width: 98%;" rows="10"></textarea></td>
+										<td><textarea name="content" class="common-textarea" th:field="*{description}" id="content" cols="30" style="width: 98%;" rows="10"></textarea></td>
 									</tr>
 									<tr>
 										<th></th>
